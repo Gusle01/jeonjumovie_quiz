@@ -108,6 +108,7 @@ const resultMap = {
   EJ: {
     title: '🎉 EJ형: 에너지 드라이버',
     image: './assets/result-ej.png',
+    shareImage: './assets/share-ej.png',
     imageAlt: 'EJ 유형 결과 대표 이미지',
     mbtiTag: 'EJ',
     mbtiDesc: '외향(E) + 계획(J)',
@@ -123,6 +124,7 @@ const resultMap = {
   EP: {
     title: '🤝 EP형: 소셜 무버',
     image: './assets/result-ep.png',
+    shareImage: './assets/share-ep.png',
     imageAlt: 'EP 유형 결과 대표 이미지',
     mbtiTag: 'EP',
     mbtiDesc: '외향(E) + 유연(P)',
@@ -138,6 +140,7 @@ const resultMap = {
   IJ: {
     title: '🧭 IJ형: 전략 큐레이터',
     image: './assets/result-ij.png',
+    shareImage: './assets/share-ij.png',
     imageAlt: 'IJ 유형 결과 대표 이미지',
     mbtiTag: 'IJ',
     mbtiDesc: '내향(I) + 계획(J)',
@@ -153,6 +156,7 @@ const resultMap = {
   IP: {
     title: '🌙 IP형: 감성 아카이버',
     image: './assets/result-ip.png',
+    shareImage: './assets/share-ip.png',
     imageAlt: 'IP 유형 결과 대표 이미지',
     mbtiTag: 'IP',
     mbtiDesc: '내향(I) + 유연(P)',
@@ -475,8 +479,9 @@ function canvasToPngBlob(canvas) {
 async function createResultCardBlob() {
   const resultType = state.resultType || getTopResultType(state.score);
   const data = resultMap[resultType];
+  const shareImagePath = data.shareImage || data.image;
   try {
-    const response = await fetch(data.image, { cache: 'no-store' });
+    const response = await fetch(shareImagePath, { cache: 'no-store' });
     if (response.ok) {
       return await response.blob();
     }
@@ -485,7 +490,7 @@ async function createResultCardBlob() {
   }
 
   const fallbackCanvas = document.createElement('canvas');
-  const typeImage = await loadImage(data.image);
+  const typeImage = await loadImage(shareImagePath);
   fallbackCanvas.width = typeImage.width;
   fallbackCanvas.height = typeImage.height;
   const fallbackCtx = fallbackCanvas.getContext('2d');

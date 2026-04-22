@@ -279,6 +279,11 @@ function setScreen(target) {
   ui.question.classList.toggle('active', target === 'question');
   ui.result.classList.toggle('active', target === 'result');
   ui.benefit.classList.toggle('active', target === 'benefit');
+  requestAnimationFrame(() => {
+    window.scrollTo({ top: 0, behavior: 'auto' });
+    document.documentElement.scrollTop = 0;
+    document.body.scrollTop = 0;
+  });
 }
 
 function renderQuestion() {

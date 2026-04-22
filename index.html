@@ -60,6 +60,9 @@
           <h2 id="result-title" class="result-title"></h2>
           <p id="result-desc" class="result-desc"></p>
           <div class="tips" id="result-tips"></div>
+          <button id="benefit-btn" class="btn btn-secondary benefit-entry-btn" type="button">
+            나의 성향과 맞는 혜택 찾기
+          </button>
           <button id="retry-btn" class="btn btn-primary result-retry result-cta-fixed">다시 테스트하기</button>
         </article>
 
@@ -88,8 +91,20 @@
           <button id="story-share-btn" class="btn btn-secondary" type="button">인스타 스토리용 이미지 공유</button>
         </div>
       </section>
+
+      <section id="benefit-screen" class="screen benefit-screen" aria-live="polite">
+        <header class="benefit-header">
+          <button id="benefit-back-btn" class="btn btn-ghost" type="button">‹ 결과로 돌아가기</button>
+        </header>
+
+        <p class="badge">쏙뱅크 추천</p>
+        <h2 id="benefit-title" class="benefit-title"></h2>
+        <p id="benefit-subtitle" class="benefit-subtitle"></p>
+
+        <div id="benefit-groups" class="benefit-groups"></div>
+      </section>
     </main>
 
-    <script src="./app.js?v=20260422b" defer></script>
+    <script src="./app.js?v=20260422c" defer></script>
   </body>
 </html>

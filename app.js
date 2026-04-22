@@ -167,10 +167,74 @@ const resultMap = {
   },
 };
 
+const sokBankBenefitMap = {
+  EJ: {
+    title: '🎉 EJ형에게 맞는 쏙뱅크 혜택',
+    subtitle:
+      '에너지 있게 움직이는 EJ형이라면\n현장 결제/이벤트 참여/즉시 혜택 체감형 기능을 우선 확인해보세요.',
+    groups: [
+      {
+        title: '현장 결제·소비 체감 혜택',
+        items: ['카드/간편결제 즉시 할인 이벤트', '영화·문화·카페 카테고리 프로모션', '월별 소비 미션형 리워드'],
+      },
+      {
+        title: '놓치기 쉬운 기능',
+        items: ['쏙뱅크 앱 내 진행 중 이벤트 모아보기', '혜택 알림 설정', '실적/조건 달성 현황 한 번에 확인'],
+      },
+    ],
+  },
+  EP: {
+    title: '🤝 EP형에게 맞는 쏙뱅크 혜택',
+    subtitle:
+      '사람들과 함께 움직이는 EP형이라면\n공유·모임·생활형 혜택 중심으로 구성해보면 좋아요.',
+    groups: [
+      {
+        title: '동행/모임 소비 혜택',
+        items: ['외식·배달·카페 생활 혜택', '교통/택시 이동 관련 할인', '주말/특정 요일 프로모션'],
+      },
+      {
+        title: '추천 활용 루틴',
+        items: ['영화제 기간 전용 예산 한도 설정', '친구와 정산 전 지출 분류 확인', '혜택 적용 가능한 결제수단 우선 사용'],
+      },
+    ],
+  },
+  IJ: {
+    title: '🧭 IJ형에게 맞는 쏙뱅크 혜택',
+    subtitle:
+      '계획형 IJ라면 조건/실적/예산 관리가 쉬운 혜택이 잘 맞습니다.\n사전에 구조를 세팅해두면 효율이 높아요.',
+    groups: [
+      {
+        title: '계획형 관리 혜택',
+        items: ['소비 리포트/카테고리 분석', '자동이체/고정지출 관리', '목표 예산 설정 기능'],
+      },
+      {
+        title: '체크 포인트',
+        items: ['혜택 조건 달성률 주간 점검', '카드 실적 구간 미리 확인', '지출 알림으로 예산 이탈 방지'],
+      },
+    ],
+  },
+  IP: {
+    title: '🌙 IP형에게 맞는 쏙뱅크 혜택',
+    subtitle:
+      '내 페이스를 중시하는 IP형이라면\n필요할 때 바로 쓰는 유연한 혜택과 간단한 관리 기능이 적합합니다.',
+    groups: [
+      {
+        title: '가볍게 쓰기 좋은 혜택',
+        items: ['소액 결제/생활 영역 혜택', '간단한 잔액·소비 확인 위젯', '즉시 확인 가능한 알림형 혜택'],
+      },
+      {
+        title: '부담 없는 관리법',
+        items: ['하루 1회 소비 요약 확인', '혜택 대상 가맹점만 선택적으로 사용', '영화제 기간 임시 예산만 간단 설정'],
+      },
+    ],
+  },
+};
+
 const ui = {
   start: document.getElementById('start-screen'),
   question: document.getElementById('question-screen'),
   result: document.getElementById('result-screen'),
+  benefit: document.getElementById('benefit-screen'),
   startBtn: document.getElementById('start-btn'),
   backBtn: document.getElementById('back-btn'),
   progressText: document.getElementById('progress-text'),
@@ -182,6 +246,11 @@ const ui = {
   resultTitle: document.getElementById('result-title'),
   resultDesc: document.getElementById('result-desc'),
   resultTips: document.getElementById('result-tips'),
+  benefitBtn: document.getElementById('benefit-btn'),
+  benefitBackBtn: document.getElementById('benefit-back-btn'),
+  benefitTitle: document.getElementById('benefit-title'),
+  benefitSubtitle: document.getElementById('benefit-subtitle'),
+  benefitGroups: document.getElementById('benefit-groups'),
   officialInstagramBtn: document.getElementById('official-instagram-btn'),
   teamInstagramBtn: document.getElementById('team-instagram-btn'),
   storyShareBtn: document.getElementById('story-share-btn'),
@@ -210,6 +279,7 @@ function setScreen(target) {
   ui.start.classList.toggle('active', target === 'start');
   ui.question.classList.toggle('active', target === 'question');
   ui.result.classList.toggle('active', target === 'result');
+  ui.benefit.classList.toggle('active', target === 'benefit');
 }
 
 function renderQuestion() {
@@ -284,6 +354,26 @@ function renderResult() {
         .join('')}
     </ul>
   `;
+}
+
+function renderBenefit(type) {
+  const fallback = sokBankBenefitMap.EP;
+  const data = sokBankBenefitMap[type] || fallback;
+
+  ui.benefitTitle.textContent = data.title;
+  ui.benefitSubtitle.textContent = data.subtitle;
+  ui.benefitGroups.innerHTML = data.groups
+    .map(
+      (group) => `
+        <article class="benefit-group">
+          <h3>${group.title}</h3>
+          <ul>
+            ${group.items.map((item) => `<li>${item}</li>`).join('')}
+          </ul>
+        </article>
+      `
+    )
+    .join('');
 }
 
 function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -452,6 +542,14 @@ ui.officialInstagramBtn.addEventListener('click', () => {
 });
 ui.teamInstagramBtn.addEventListener('click', () => {
   window.open(TEAM_INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
+});
+ui.benefitBtn.addEventListener('click', () => {
+  const type = state.resultType || getTopResultType(state.score);
+  renderBenefit(type);
+  setScreen('benefit');
+});
+ui.benefitBackBtn.addEventListener('click', () => {
+  setScreen('result');
 });
 ui.storyShareBtn.addEventListener('click', shareToInstagramStory);
 ui.retryBtn.addEventListener('click', resetTest);

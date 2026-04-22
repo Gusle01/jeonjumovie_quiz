@@ -423,6 +423,14 @@ h1 {
   margin-top: 14px;
 }
 
+.benefit-entry-btn {
+  margin-top: 10px;
+  border-radius: 14px;
+  min-height: 54px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
 .start-cta-fixed,
 .result-cta-fixed {
   position: fixed;
@@ -441,6 +449,61 @@ h1 {
 #start-screen.active,
 #result-screen.active {
   padding-bottom: 140px;
+}
+
+.benefit-screen {
+  gap: 12px;
+}
+
+.benefit-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.benefit-title {
+  font-size: clamp(30px, 5.8vw, 42px);
+  line-height: 1.24;
+  letter-spacing: -0.3px;
+}
+
+.benefit-subtitle {
+  margin-top: -4px;
+  color: #5f6c85;
+  font-size: clamp(17px, 3.2vw, 22px);
+  line-height: 1.5;
+  white-space: pre-line;
+}
+
+.benefit-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.benefit-group {
+  border: 1px solid #dce4f6;
+  border-radius: 18px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.benefit-group h3 {
+  margin: 0 0 8px;
+  font-size: clamp(19px, 3.2vw, 24px);
+  color: #2c3a5e;
+}
+
+.benefit-group ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #4f5b73;
+  line-height: 1.65;
+}
+
+.benefit-group li + li {
+  margin-top: 3px;
 }
 
 @media (max-width: 420px) {
@@ -521,6 +584,34 @@ h1 {
 
   .result-title {
     font-size: 34px;
+  }
+
+  .benefit-entry-btn {
+    min-height: 48px;
+    font-size: 15px;
+    border-radius: 12px;
+  }
+
+  .benefit-title {
+    font-size: 24px;
+  }
+
+  .benefit-subtitle {
+    font-size: 15px;
+  }
+
+  .benefit-group {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .benefit-group h3 {
+    font-size: 17px;
+  }
+
+  .benefit-group ul {
+    font-size: 14px;
+    line-height: 1.55;
   }
 
   .tips h3 {

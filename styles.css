@@ -423,6 +423,10 @@ h1 {
   margin-top: 14px;
 }
 
+.result-retry-inline {
+  margin-top: 2px;
+}
+
 .benefit-entry-btn {
   margin-top: 10px;
   border-radius: 14px;

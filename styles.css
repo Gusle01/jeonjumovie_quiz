@@ -502,6 +502,23 @@ h1 {
   white-space: pre-line;
 }
 
+.benefit-logo-wrap {
+  margin-top: 2px;
+  border: 1px solid #dce4f6;
+  border-radius: 18px;
+  background: #ffffff;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.benefit-logo {
+  display: block;
+  width: min(210px, 52vw);
+  height: auto;
+  object-fit: contain;
+}
+
 .benefit-groups {
   display: flex;
   flex-direction: column;
@@ -625,6 +642,15 @@ h1 {
 
   .benefit-subtitle {
     font-size: 15px;
+  }
+
+  .benefit-logo-wrap {
+    border-radius: 14px;
+    padding: 8px;
+  }
+
+  .benefit-logo {
+    width: min(170px, 46vw);
   }
 
   .benefit-group {

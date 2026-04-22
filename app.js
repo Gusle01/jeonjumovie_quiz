@@ -447,6 +447,31 @@ function drawImageContain(ctx, image, x, y, width, height) {
   ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
 }
 
+function canvasToPngBlob(canvas) {
+  return new Promise((resolve, reject) => {
+    if (typeof canvas.toBlob === 'function') {
+      canvas.toBlob((blob) => {
+        if (blob) {
+          resolve(blob);
+          return;
+        }
+        reject(new Error('결과 이미지를 생성하지 못했습니다.'));
+      }, 'image/png');
+      return;
+    }
+
+    try {
+      const dataUrl = canvas.toDataURL('image/png');
+      fetch(dataUrl)
+        .then((response) => response.blob())
+        .then((blob) => resolve(blob))
+        .catch(() => reject(new Error('결과 이미지를 생성하지 못했습니다.')));
+    } catch (_error) {
+      reject(new Error('결과 이미지를 생성하지 못했습니다.'));
+    }
+  });
+}
+
 async function createResultCardBlob() {
   const resultType = state.resultType || getTopResultType(state.score);
   const data = resultMap[resultType];
@@ -489,15 +514,31 @@ async function createResultCardBlob() {
   drawCenteredFittedText(ctx, '@jbsupporters_official  @jbs_jeonjin.zip', 1805, 980, '700', 56, 38, '#FFFFFF');
   drawCenteredFittedText(ctx, '인스타그램에서 더 많은 현장 소식을 확인하세요', 1870, 980, '500', 46, 30, '#FFFFFF');
 
-  return new Promise((resolve, reject) => {
-    canvas.toBlob((blob) => {
-      if (!blob) {
-        reject(new Error('결과 이미지를 생성하지 못했습니다.'));
-        return;
-      }
-      resolve(blob);
-    }, 'image/png');
-  });
+  return canvasToPngBlob(canvas);
+}
+
+async function createFallbackCardBlob() {
+  const resultType = state.resultType || getTopResultType(state.score);
+  const data = resultMap[resultType];
+  const canvas = document.createElement('canvas');
+  canvas.width = 1080;
+  canvas.height = 1920;
+  const ctx = canvas.getContext('2d');
+
+  if (!ctx) {
+    throw new Error('Canvas context를 생성할 수 없습니다.');
+  }
+
+  ctx.fillStyle = '#F4F6FB';
+  ctx.fillRect(0, 0, 1080, 1920);
+  drawRoundedRect(ctx, 80, 260, 920, 1400, 32, '#FFFFFF');
+  drawCenteredFittedText(ctx, '전주국제영화제 MoneyBTI 결과', 180, 900, '700', 62, 44, '#4B5670');
+  drawCenteredFittedText(ctx, data.mbtiTag, 520, 800, '800', 250, 170, '#3459D6');
+  drawCenteredFittedText(ctx, data.title, 700, 860, '800', 86, 52, '#3459D6');
+  drawCenteredFittedText(ctx, data.mbtiDesc, 810, 860, '700', 64, 42, '#5A6172');
+  drawCenteredFittedText(ctx, '@jbsupporters_official  @jbs_jeonjin.zip', 1760, 930, '600', 54, 36, '#5A6172');
+
+  return canvasToPngBlob(canvas);
 }
 
 function downloadBlob(blob, filename) {
@@ -562,7 +603,15 @@ async function shareToInstagramStory() {
   } catch (error) {
     const isAbort = error instanceof DOMException && error.name === 'AbortError';
     if (!isAbort) {
-      window.alert('공유 중 문제가 발생했습니다. 다시 시도해 주세요.');
+      try {
+        const fallbackBlob = await createFallbackCardBlob();
+        const fallbackFilename = `jiff-moneybti-${Date.now()}-fallback.png`;
+        downloadBlob(fallbackBlob, fallbackFilename);
+        window.open(TEAM_INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
+        window.alert('공유 기능 대신 결과 이미지를 저장했습니다. 인스타 스토리에서 업로드해 주세요.');
+      } catch (_fallbackError) {
+        window.alert('이미지 생성 중 문제가 발생했습니다. 브라우저를 새로고침한 뒤 다시 시도해 주세요.');
+      }
     }
   } finally {
     ui.storyShareBtn.disabled = false;

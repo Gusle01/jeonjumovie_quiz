@@ -1,0 +1,18 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="20" y1="20" x2="620" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF8F4"/>
+      <stop offset="1" stop-color="#D8F0E5"/>
+    </linearGradient>
+  </defs>
+  <rect x="20" y="20" width="600" height="320" rx="30" fill="url(#bg)"/>
+  <rect x="92" y="88" width="120" height="162" rx="16" fill="#1E9C67"/>
+  <rect x="110" y="108" width="84" height="126" rx="10" fill="#F7FFFB"/>
+  <path d="M126 147L142 162L172 132" stroke="#1E9C67" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M126 190L142 205L172 175" stroke="#1E9C67" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="250" y="108" width="300" height="18" rx="9" fill="#1E9C67"/>
+  <rect x="250" y="144" width="232" height="18" rx="9" fill="#42BE84"/>
+  <rect x="250" y="180" width="266" height="18" rx="9" fill="#74CEA6"/>
+  <rect x="250" y="216" width="194" height="18" rx="9" fill="#9EDFC2"/>
+  <text x="92" y="286" font-size="34" font-family="Pretendard, Arial, sans-serif" font-weight="700" fill="#186245">IJ 전략 큐레이터</text>
+</svg>

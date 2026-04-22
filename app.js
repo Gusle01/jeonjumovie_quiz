@@ -3,100 +3,100 @@ const questions = [
     id: 1,
     title: '영화제 티켓을 예매할 때 나는?',
     answers: [
-      { text: '오픈과 동시에 예매! 보고 싶은 작품은 무조건 선점', type: 'P' },
-      { text: '여유롭게 현장에서 사거나 취소표 노림', type: 'C' },
-      { text: '지인과 함께 볼 작품 먼저 맞추고 예매', type: 'C' },
-      { text: '평점·리뷰 꼼꼼히 보고 신중하게 결정', type: 'P' },
+      { text: '오픈과 동시에 예매! 보고 싶은 작품은 무조건 선점', type: 'EJ' },
+      { text: '여유롭게 현장에서 사거나 취소표 노림', type: 'IP' },
+      { text: '지인과 함께 볼 작품 먼저 맞추고 예매', type: 'EP' },
+      { text: '평점·리뷰 꼼꼼히 보고 신중하게 결정', type: 'IJ' },
     ],
   },
   {
     id: 2,
     title: '영화제 기간, 하루 몇 편을 볼 계획인가요?',
     answers: [
-      { text: '1편! 여유롭게 제대로 즐기기', type: 'P' },
-      { text: '2~3편, 적당히 알차게', type: 'P' },
-      { text: '4편 이상! 영화제는 몰아보는 맛', type: 'C' },
-      { text: '그날그날 기분에 따라 달라요', type: 'C' },
+      { text: '1편! 여유롭게 제대로 즐기기', type: 'IJ' },
+      { text: '2~3편, 적당히 알차게', type: 'IP' },
+      { text: '4편 이상! 영화제는 몰아보는 맛', type: 'EJ' },
+      { text: '그날그날 기분에 따라 달라요', type: 'EP' },
     ],
   },
   {
     id: 3,
     title: '영화 관람 후 나의 행동은?',
     answers: [
-      { text: '바로 SNS에 후기 올리기', type: 'C' },
-      { text: '혼자 여운 느끼며 조용히 있기', type: 'P' },
-      { text: '친구들과 카페에서 영화 얘기 나누기', type: 'C' },
-      { text: '감독·배우 정보 찾아보며 분석하기', type: 'P' },
+      { text: '바로 SNS에 후기 올리기', type: 'EJ' },
+      { text: '혼자 여운 느끼며 조용히 있기', type: 'IP' },
+      { text: '친구들과 카페에서 영화 얘기 나누기', type: 'EP' },
+      { text: '감독·배우 정보 찾아보며 분석하기', type: 'IJ' },
     ],
   },
   {
     id: 4,
     title: '영화제 굿즈숍 앞에 섰을 때 나는?',
     answers: [
-      { text: '마음에 드는 거 다 담기! 나중에 후회하면 아쉽잖아', type: 'C' },
-      { text: '실용적인 것 위주로 딱 필요한 것만', type: 'P' },
-      { text: '예쁜 거 하나 골라 기념으로', type: 'C' },
-      { text: '구경만 하고 그냥 나옴', type: 'P' },
+      { text: '마음에 드는 거 다 담기! 나중에 후회하면 아쉽잖아', type: 'EJ' },
+      { text: '실용적인 것 위주로 딱 필요한 것만', type: 'IJ' },
+      { text: '예쁜 거 하나 골라 기념으로', type: 'EP' },
+      { text: '구경만 하고 그냥 나옴', type: 'IP' },
     ],
   },
   {
     id: 5,
     title: '영화제 식사 계획은?',
     answers: [
-      { text: '맛집 리스트 미리 뽑아두고 정해진 곳만', type: 'P' },
-      { text: '걷다가 땡기면 아무데나', type: 'C' },
-      { text: '함께 온 사람들이 먹고 싶은 곳으로', type: 'C' },
-      { text: '편의점 or 간단히 해결, 영화가 우선!', type: 'P' },
+      { text: '맛집 리스트 미리 뽑아두고 정해진 곳만', type: 'IJ' },
+      { text: '걷다가 땡기면 아무데나', type: 'EP' },
+      { text: '함께 온 사람들이 먹고 싶은 곳으로', type: 'EJ' },
+      { text: '편의점 or 간단히 해결, 영화가 우선!', type: 'IP' },
     ],
   },
   {
     id: 6,
     title: '영화제에서 가장 중요한 것은?',
     answers: [
-      { text: '희귀한 작품, 특별 상영작을 보는 것', type: 'P' },
-      { text: '좋은 사람들과 함께하는 시간', type: 'C' },
-      { text: '나만의 특별한 추억과 감동', type: 'C' },
-      { text: '영화감독/배우 GV 참여 등 특별 이벤트', type: 'P' },
+      { text: '희귀한 작품, 특별 상영작을 보는 것', type: 'IJ' },
+      { text: '좋은 사람들과 함께하는 시간', type: 'EP' },
+      { text: '나만의 특별한 추억과 감동', type: 'IP' },
+      { text: '영화감독/배우 GV 참여 등 특별 이벤트', type: 'EJ' },
     ],
   },
   {
     id: 7,
     title: '영화제 예산을 짤 때 나는?',
     answers: [
-      { text: '티켓·굿즈·식비 항목별로 예산 설정', type: 'P' },
-      { text: '대략 이 정도 쓰면 되겠지~ 하고 감으로', type: 'C' },
-      { text: '특별한 경험에는 아끼지 않는 편', type: 'C' },
-      { text: '가능하면 최대한 아끼는 편', type: 'P' },
+      { text: '티켓·굿즈·식비 항목별로 예산 설정', type: 'IJ' },
+      { text: '대략 이 정도 쓰면 되겠지~ 하고 감으로', type: 'EP' },
+      { text: '특별한 경험에는 아끼지 않는 편', type: 'EJ' },
+      { text: '가능하면 최대한 아끼는 편', type: 'IP' },
     ],
   },
   {
     id: 8,
     title: '영화제 동행은 어떻게 하나요?',
     answers: [
-      { text: '혼자가 편해! 내 페이스대로', type: 'P' },
-      { text: '친한 친구 1~2명과 함께', type: 'C' },
-      { text: '영화 좋아하는 사람들 많이 모아서 단체로', type: 'C' },
-      { text: '그때그때 달라요, 혼자도 단체도 다 OK', type: 'P' },
+      { text: '혼자가 편해! 내 페이스대로', type: 'IP' },
+      { text: '친한 친구 1~2명과 함께', type: 'EP' },
+      { text: '영화 좋아하는 사람들 많이 모아서 단체로', type: 'EJ' },
+      { text: '그때그때 달라요, 혼자도 단체도 다 OK', type: 'EP' },
     ],
   },
   {
     id: 9,
     title: '영화제 기간 숙소/이동 계획은?',
     answers: [
-      { text: '미리 숙소 예약하고 교통 루트도 다 짜둠', type: 'P' },
-      { text: '당일치기! 교통편만 체크', type: 'C' },
-      { text: '즉흥적으로! 되면 되는 거지', type: 'C' },
-      { text: '같이 가는 친구한테 다 맡김', type: 'P' },
+      { text: '미리 숙소 예약하고 교통 루트도 다 짜둠', type: 'IJ' },
+      { text: '당일치기! 교통편만 체크', type: 'IP' },
+      { text: '즉흥적으로! 되면 되는 거지', type: 'EP' },
+      { text: '같이 가는 친구한테 다 맡김', type: 'EJ' },
     ],
   },
   {
     id: 10,
     title: '영화제가 끝난 뒤 나는?',
     answers: [
-      { text: '관람 기록 정리하고 포스터·티켓 보관', type: 'P' },
-      { text: '이미 다음 영화제 기대 중', type: 'C' },
-      { text: '여운이 길게 남아서 한동안 그 생각만', type: 'P' },
-      { text: 'SNS에 후기 올리고 친구들에게 추천', type: 'C' },
+      { text: '관람 기록 정리하고 포스터·티켓 보관', type: 'IJ' },
+      { text: '이미 다음 영화제 기대 중', type: 'EJ' },
+      { text: '여운이 길게 남아서 한동안 그 생각만', type: 'IP' },
+      { text: 'SNS에 후기 올리고 친구들에게 추천', type: 'EP' },
     ],
   },
 ];
@@ -105,30 +105,64 @@ const OFFICIAL_INSTAGRAM_URL = 'https://www.instagram.com/jbsupporters_official/
 const TEAM_INSTAGRAM_URL = 'https://www.instagram.com/jbs_jeonjin.zip/';
 
 const resultMap = {
-  C: {
-    title: '🎬 축제형 영화 탐험가',
-    image: './assets/result-c.svg',
-    imageAlt: 'C 타입 결과 대표 이미지',
+  EJ: {
+    title: '🎉 EJ형: 에너지 드라이버',
+    image: './assets/result-ej.svg',
+    imageAlt: 'EJ 유형 결과 대표 이미지',
+    mbtiTag: 'EJ',
+    mbtiDesc: '외향(E) + 계획(J)',
     description:
-      '영화제를 통해 새로운 사람들과 연결되고, 낯선 이야기에 영감을 얻는 타입!\n다양한 장르를 넘나들며 영화제의 에너지를 온몸으로 흡수합니다.\n굿즈도 충동구매 한 번쯤은 있을 걸요?',
+      '영화제를 주도적으로 즐기는 실행형 타입!\n원하는 작품과 이벤트를 빠르게 선점하고\n현장의 열기를 끝까지 끌고 가는 편이에요.',
     tipsTitle: '나에게 맞는 영화제 꿀팁',
     tips: [
-      '다양한 장르 도전을 두려워하지 마세요!',
-      'GV(대화 이벤트)에 적극 참여해보세요.',
-      '굿즈 예산은 미리 정해두는 게 좋아요.',
+      '오전/오후 2블록으로 스케줄을 나누면 체력 관리가 쉬워요.',
+      'GV/이벤트 우선순위를 3개만 먼저 정해두세요.',
+      '즉흥 소비 상한선을 미리 정하면 만족도가 더 올라가요.',
     ],
   },
-  P: {
-    title: '🧭 전략형 영화 큐레이터',
-    image: './assets/result-p.svg',
-    imageAlt: 'P 타입 결과 대표 이미지',
+  EP: {
+    title: '🤝 EP형: 소셜 무버',
+    image: './assets/result-ep.svg',
+    imageAlt: 'EP 유형 결과 대표 이미지',
+    mbtiTag: 'EP',
+    mbtiDesc: '외향(E) + 유연(P)',
     description:
-      '관람 동선과 예산을 정확하게 세우는 타입입니다.\n한정된 시간 안에서 최대의 만족을 뽑아내는 계획형 관람자예요.\n효율과 만족을 모두 잡는 영화제 마스터에 가깝습니다.',
+      '사람들과 함께할 때 영화제가 더 재밌어지는 타입!\n작품 감상부터 대화, 후기 공유까지\n순간의 분위기를 즐기며 경험치를 쌓아요.',
     tipsTitle: '나에게 맞는 영화제 꿀팁',
     tips: [
-      '보고 싶은 작품은 우선순위를 3단계로 나눠보세요.',
-      '상영관 이동 시간을 고려해 1일 3편 내외로 구성하세요.',
-      '예산표에 식비/교통비를 분리하면 훨씬 정확해져요.',
+      '동행 그룹의 관람 기대작 1순위만 먼저 맞춰보세요.',
+      '감상 기록은 짧게라도 바로 남기면 공유가 쉬워져요.',
+      '식사/카페 시간을 상영 사이 고정 슬롯으로 두면 안정적이에요.',
+    ],
+  },
+  IJ: {
+    title: '🧭 IJ형: 전략 큐레이터',
+    image: './assets/result-ij.svg',
+    imageAlt: 'IJ 유형 결과 대표 이미지',
+    mbtiTag: 'IJ',
+    mbtiDesc: '내향(I) + 계획(J)',
+    description:
+      '분석과 계획으로 만족도를 높이는 정밀 설계형!\n작품 선택, 동선, 예산까지 균형 있게 준비해\n후회 없는 영화제 경험을 만드는 타입입니다.',
+    tipsTitle: '나에게 맞는 영화제 꿀팁',
+    tips: [
+      '플랜 A/B를 동시에 짜두면 매진 상황에 강해집니다.',
+      '하루 총 이동시간을 90분 이내로 제한해보세요.',
+      '예산표는 티켓/굿즈/식비/교통 4항목으로 나누면 정확해요.',
+    ],
+  },
+  IP: {
+    title: '🌙 IP형: 감성 아카이버',
+    image: './assets/result-ip.svg',
+    imageAlt: 'IP 유형 결과 대표 이미지',
+    mbtiTag: 'IP',
+    mbtiDesc: '내향(I) + 유연(P)',
+    description:
+      '영화의 여운을 깊게 즐기는 몰입형 타입!\n혼자만의 페이스를 지키면서도 필요한 순간엔 유연하게 움직여\n내 취향에 맞는 영화제를 완성합니다.',
+    tipsTitle: '나에게 맞는 영화제 꿀팁',
+    tips: [
+      '하루 2~3편 중심으로 여유 슬롯을 꼭 남겨두세요.',
+      '인상 깊은 장면 한 줄 기록만 해도 기억이 오래 갑니다.',
+      '혼영 루트와 동행 루트를 각각 1개씩 준비해두면 편해요.',
     ],
   },
 };
@@ -156,10 +190,21 @@ const ui = {
 
 const state = {
   step: 0,
-  score: { C: 0, P: 0 },
+  score: { EJ: 0, EP: 0, IJ: 0, IP: 0 },
   history: [],
   resultType: null,
 };
+
+function getTopResultType(score) {
+  const tiePriority = ['EJ', 'EP', 'IJ', 'IP'];
+  return Object.keys(score).sort((a, b) => {
+    const diff = score[b] - score[a];
+    if (diff !== 0) {
+      return diff;
+    }
+    return tiePriority.indexOf(a) - tiePriority.indexOf(b);
+  })[0];
+}
 
 function setScreen(target) {
   ui.start.classList.toggle('active', target === 'start');
@@ -215,7 +260,7 @@ function goBack() {
 }
 
 function renderResult() {
-  const type = state.score.C >= state.score.P ? 'C' : 'P';
+  const type = getTopResultType(state.score);
   const data = resultMap[type];
   state.resultType = type;
 
@@ -264,7 +309,7 @@ function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
 }
 
 function createResultCardBlob() {
-  const resultType = state.resultType || (state.score.C >= state.score.P ? 'C' : 'P');
+  const resultType = state.resultType || getTopResultType(state.score);
   const data = resultMap[resultType];
   const canvas = document.createElement('canvas');
   canvas.width = 1080;
@@ -299,12 +344,15 @@ function createResultCardBlob() {
   ctx.fillStyle = 'rgba(255,255,255,0.96)';
   ctx.fillRect(60, 340, 960, 1080);
   ctx.fillStyle = '#1453cf';
+  ctx.font = '700 40px Pretendard, sans-serif';
+  ctx.fillText(`${data.mbtiTag} · ${data.mbtiDesc}`, 110, 430);
+  ctx.fillStyle = '#1453cf';
   ctx.font = '800 66px Pretendard, sans-serif';
-  ctx.fillText(data.title, 110, 470);
+  wrapText(ctx, data.title, 110, 500, 860, 74);
 
   ctx.fillStyle = '#263142';
   ctx.font = '500 42px Pretendard, sans-serif';
-  let y = 570;
+  let y = 620;
   data.description.split('\n').forEach((line) => {
     y = wrapText(ctx, line, 110, y, 860, 62);
     y += 6;
@@ -384,7 +432,7 @@ async function shareToInstagramStory() {
 
 function resetTest() {
   state.step = 0;
-  state.score = { C: 0, P: 0 };
+  state.score = { EJ: 0, EP: 0, IJ: 0, IP: 0 };
   state.history = [];
   state.resultType = null;
   renderQuestion();
@@ -393,7 +441,7 @@ function resetTest() {
 
 ui.startBtn.addEventListener('click', () => {
   state.step = 0;
-  state.score = { C: 0, P: 0 };
+  state.score = { EJ: 0, EP: 0, IJ: 0, IP: 0 };
   state.history = [];
   renderQuestion();
   setScreen('question');

@@ -1,0 +1,18 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="20" y1="20" x2="620" y2="340" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EAF1FF"/>
+      <stop offset="1" stop-color="#D9E7FF"/>
+    </linearGradient>
+  </defs>
+  <rect x="20" y="20" width="600" height="320" rx="30" fill="url(#bg)"/>
+  <rect x="96" y="90" width="108" height="148" rx="14" fill="#2E63E0"/>
+  <rect x="112" y="110" width="76" height="42" rx="8" fill="#FFFFFF"/>
+  <rect x="112" y="164" width="76" height="58" rx="8" fill="#ABC7FF"/>
+  <circle cx="334" cy="168" r="78" fill="#2E63E0"/>
+  <path d="M334 114V222M280 168H388" stroke="#FFFFFF" stroke-width="16" stroke-linecap="round"/>
+  <rect x="436" y="104" width="120" height="18" rx="9" fill="#2E63E0"/>
+  <rect x="436" y="140" width="94" height="18" rx="9" fill="#5E8EFF"/>
+  <rect x="436" y="176" width="110" height="18" rx="9" fill="#7BA4FF"/>
+  <text x="92" y="286" font-size="34" font-family="Pretendard, Arial, sans-serif" font-weight="700" fill="#153F98">EJ 에너지 드라이버</text>
+</svg>

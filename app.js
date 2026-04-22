@@ -11,7 +11,7 @@ const questions = [
   },
   {
     id: 2,
-    title: '영화제 기간, 하루 몇 편을 볼 계획인가요?',
+    title: '영화제 기간 하루 몇 편 볼 계획인가요?',
     answers: [
       { text: '1편! 여유롭게 제대로 즐기기', type: 'IJ' },
       { text: '2~3편, 적당히 알차게', type: 'IP' },

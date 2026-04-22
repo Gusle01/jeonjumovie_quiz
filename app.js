@@ -287,25 +287,38 @@ function renderResult() {
 }
 
 function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
-  const words = text.split(' ');
   let line = '';
   let currentY = y;
-  words.forEach((word) => {
-    const testLine = `${line}${word} `;
+  const chars = [...text];
+
+  chars.forEach((char) => {
+    const testLine = `${line}${char}`;
     const { width } = ctx.measureText(testLine);
     if (width > maxWidth && line) {
-      ctx.fillText(line.trim(), x, currentY);
-      line = `${word} `;
+      ctx.fillText(line.trimEnd(), x, currentY);
+      line = char;
       currentY += lineHeight;
       return;
     }
     line = testLine;
   });
   if (line) {
-    ctx.fillText(line.trim(), x, currentY);
+    ctx.fillText(line.trimEnd(), x, currentY);
     currentY += lineHeight;
   }
   return currentY;
+}
+
+function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
+  ctx.beginPath();
+  ctx.moveTo(x + radius, y);
+  ctx.arcTo(x + width, y, x + width, y + height, radius);
+  ctx.arcTo(x + width, y + height, x, y + height, radius);
+  ctx.arcTo(x, y + height, x, y, radius);
+  ctx.arcTo(x, y, x + width, y, radius);
+  ctx.closePath();
+  ctx.fillStyle = fillStyle;
+  ctx.fill();
 }
 
 function createResultCardBlob() {
@@ -321,60 +334,67 @@ function createResultCardBlob() {
   }
 
   const gradient = ctx.createLinearGradient(0, 0, 1080, 1920);
-  gradient.addColorStop(0, '#0d4cde');
-  gradient.addColorStop(0.5, '#1881ff');
-  gradient.addColorStop(1, '#73c5ff');
+  gradient.addColorStop(0, '#0D4CDE');
+  gradient.addColorStop(0.55, '#1D6FF2');
+  gradient.addColorStop(1, '#5CAEFF');
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = 'rgba(255,255,255,0.14)';
+  ctx.fillStyle = 'rgba(255,255,255,0.16)';
   ctx.beginPath();
-  ctx.arc(920, 240, 220, 0, Math.PI * 2);
+  ctx.arc(980, 220, 260, 0, Math.PI * 2);
   ctx.fill();
   ctx.beginPath();
-  ctx.arc(150, 1700, 240, 0, Math.PI * 2);
+  ctx.arc(140, 1730, 250, 0, Math.PI * 2);
   ctx.fill();
 
   ctx.fillStyle = '#ffffff';
-  ctx.font = '700 44px Pretendard, sans-serif';
-  ctx.fillText('전주국제영화제 X 전북은행 대학생 서포터즈', 80, 140);
-  ctx.font = '800 76px Pretendard, sans-serif';
-  ctx.fillText('MoneyBTI 결과', 80, 250);
+  ctx.font = '700 60px Pretendard, sans-serif';
+  ctx.fillText('전주국제영화제 X 전북은행 대학생 서포터즈', 82, 142);
+  ctx.font = '800 98px Pretendard, sans-serif';
+  ctx.fillText('MoneyBTI 결과', 82, 252);
 
-  ctx.fillStyle = 'rgba(255,255,255,0.96)';
-  ctx.fillRect(60, 340, 960, 1080);
-  ctx.fillStyle = '#1453cf';
-  ctx.font = '700 40px Pretendard, sans-serif';
-  ctx.fillText(`${data.mbtiTag} · ${data.mbtiDesc}`, 110, 430);
-  ctx.fillStyle = '#1453cf';
-  ctx.font = '800 66px Pretendard, sans-serif';
-  wrapText(ctx, data.title, 110, 500, 860, 74);
+  const cardX = 60;
+  const cardY = 340;
+  const cardW = 960;
+  const cardH = 1120;
+  drawRoundedRect(ctx, cardX, cardY, cardW, cardH, 26, '#ECEFF4');
 
-  ctx.fillStyle = '#263142';
-  ctx.font = '500 42px Pretendard, sans-serif';
-  let y = 620;
+  const contentX = cardX + 50;
+  const contentMaxW = cardW - 100;
+  let y = cardY + 95;
+
+  ctx.fillStyle = '#1C4FBF';
+  ctx.font = '700 58px Pretendard, sans-serif';
+  y = wrapText(ctx, `${data.mbtiTag} · ${data.mbtiDesc}`, contentX, y, contentMaxW, 66);
+
+  ctx.font = '800 86px Pretendard, sans-serif';
+  y = wrapText(ctx, data.title, contentX, y + 10, contentMaxW, 96);
+
+  ctx.fillStyle = '#2A364B';
+  ctx.font = '500 62px Pretendard, sans-serif';
+  y += 22;
   data.description.split('\n').forEach((line) => {
-    y = wrapText(ctx, line, 110, y, 860, 62);
-    y += 6;
+    y = wrapText(ctx, line, contentX, y, contentMaxW, 72);
   });
 
-  ctx.fillStyle = '#0c3ca7';
-  ctx.font = '700 48px Pretendard, sans-serif';
-  ctx.fillText('추천 팁', 110, 820);
+  ctx.fillStyle = '#1C4FBF';
+  ctx.font = '700 68px Pretendard, sans-serif';
+  y += 20;
+  y = wrapText(ctx, '추천 팁', contentX, y, contentMaxW, 76);
 
-  ctx.fillStyle = '#2b3a55';
-  ctx.font = '500 38px Pretendard, sans-serif';
-  y = 900;
+  ctx.fillStyle = '#2F3F5B';
+  ctx.font = '500 58px Pretendard, sans-serif';
+  y += 6;
   data.tips.forEach((tip) => {
-    y = wrapText(ctx, `• ${tip}`, 110, y, 860, 56);
-    y += 8;
+    y = wrapText(ctx, `• ${tip}`, contentX, y, contentMaxW, 70);
   });
 
   ctx.fillStyle = '#ffffff';
-  ctx.font = '600 40px Pretendard, sans-serif';
-  ctx.fillText('@jbsupporters_official  @jbs_jeonjin.zip', 80, 1740);
-  ctx.font = '500 34px Pretendard, sans-serif';
-  ctx.fillText('인스타그램에서 더 많은 현장 소식을 확인하세요', 80, 1810);
+  ctx.font = '600 58px Pretendard, sans-serif';
+  ctx.fillText('@jbsupporters_official  @jbs_jeonjin.zip', 82, 1740);
+  ctx.font = '500 54px Pretendard, sans-serif';
+  ctx.fillText('인스타그램에서 더 많은 현장 소식을 확인하세요', 82, 1820);
 
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => {

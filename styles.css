@@ -735,8 +735,8 @@ h1 {
 }
 
 .benefit-store-btn img {
-  width: 22px;
-  height: 22px;
+  width: 34px;
+  height: 34px;
   flex: 0 0 auto;
 }
 
@@ -913,6 +913,11 @@ h1 {
   .benefit-cta-actions {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .benefit-store-btn img {
+    width: 30px;
+    height: 30px;
   }
 
   .icon-btn img {

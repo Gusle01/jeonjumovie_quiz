@@ -81,11 +81,14 @@ const questions = [
   },
 ];
 
-const INSTAGRAM_URL = 'https://www.instagram.com/jbs_jeonjin.zip/';
+const OFFICIAL_INSTAGRAM_URL = 'https://www.instagram.com/jbsupporters_official/';
+const TEAM_INSTAGRAM_URL = 'https://www.instagram.com/jbs_jeonjin.zip/';
 
 const resultMap = {
   C: {
     title: 'C 타입: Cinema Flow Collector',
+    image: './assets/result-c.svg',
+    imageAlt: 'C 타입 결과 대표 이미지',
     description:
       '영화제의 순간과 경험에 아낌없이 투자하는 타입입니다.\n상영, 대화, 굿즈, 공간까지 전체 분위기를 깊게 즐기는 편이에요.',
     tips: [
@@ -96,6 +99,8 @@ const resultMap = {
   },
   P: {
     title: 'P 타입: Practical Program Planner',
+    image: './assets/result-p.svg',
+    imageAlt: 'P 타입 결과 대표 이미지',
     description:
       '예산과 동선을 먼저 설계하는 실속형 타입입니다.\n최적의 선택으로 많은 작품을 안정적으로 즐기는 데 강점이 있어요.',
     tips: [
@@ -116,10 +121,12 @@ const ui = {
   progressBar: document.getElementById('progress-bar'),
   questionTitle: document.getElementById('question-title'),
   answers: document.getElementById('answers'),
+  resultVisual: document.getElementById('result-visual'),
   resultTitle: document.getElementById('result-title'),
   resultDesc: document.getElementById('result-desc'),
   resultTips: document.getElementById('result-tips'),
-  instagramBtn: document.getElementById('instagram-btn'),
+  officialInstagramBtn: document.getElementById('official-instagram-btn'),
+  teamInstagramBtn: document.getElementById('team-instagram-btn'),
   storyShareBtn: document.getElementById('story-share-btn'),
   retryBtn: document.getElementById('retry-btn'),
 };
@@ -188,6 +195,8 @@ function renderResult() {
   const data = resultMap[type];
   state.resultType = type;
 
+  ui.resultVisual.src = data.image;
+  ui.resultVisual.alt = data.imageAlt;
   ui.resultTitle.textContent = data.title;
   ui.resultDesc.textContent = data.description;
   ui.resultTips.innerHTML = `
@@ -281,7 +290,7 @@ function createResultCardBlob() {
 
   ctx.fillStyle = '#ffffff';
   ctx.font = '600 40px Pretendard, sans-serif';
-  ctx.fillText('@jbs_jeonjin.zip', 80, 1740);
+  ctx.fillText('@jbsupporters_official  @jbs_jeonjin.zip', 80, 1740);
   ctx.font = '500 34px Pretendard, sans-serif';
   ctx.fillText('인스타그램에서 더 많은 현장 소식을 확인하세요', 80, 1810);
 
@@ -316,7 +325,7 @@ async function shareToInstagramStory() {
     const file = new File([blob], `jiff-moneybti-${Date.now()}.png`, { type: 'image/png' });
     const shareData = {
       title: 'JIFF MoneyBTI 결과',
-      text: '전주국제영화제 X 전북은행 대학생 서포터즈 MoneyBTI 결과입니다.',
+      text: '전주국제영화제 X 전북은행 대학생 서포터즈 MoneyBTI 결과입니다. @jbsupporters_official @jbs_jeonjin.zip',
       files: [file],
     };
 
@@ -326,7 +335,7 @@ async function shareToInstagramStory() {
     }
 
     downloadBlob(blob, file.name);
-    window.open(INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
+    window.open(TEAM_INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
     window.alert('현재 환경에서는 직접 공유가 제한되어 결과 이미지를 저장했습니다. 인스타 스토리에서 업로드해 주세요.');
   } catch (error) {
     const isAbort = error instanceof DOMException && error.name === 'AbortError';
@@ -357,8 +366,11 @@ ui.startBtn.addEventListener('click', () => {
 });
 
 ui.backBtn.addEventListener('click', goBack);
-ui.instagramBtn.addEventListener('click', () => {
-  window.open(INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
+ui.officialInstagramBtn.addEventListener('click', () => {
+  window.open(OFFICIAL_INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
+});
+ui.teamInstagramBtn.addEventListener('click', () => {
+  window.open(TEAM_INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
 });
 ui.storyShareBtn.addEventListener('click', shareToInstagramStory);
 ui.retryBtn.addEventListener('click', resetTest);

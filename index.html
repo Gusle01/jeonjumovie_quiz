@@ -43,14 +43,29 @@
 
       <section id="result-screen" class="screen" aria-live="polite">
         <p class="badge">결과</p>
+        <div class="result-visual-wrap">
+          <img id="result-visual" class="result-visual" src="./assets/result-c.svg" alt="결과 대표 이미지" />
+        </div>
         <h2 id="result-title"></h2>
         <p id="result-desc" class="result-desc"></p>
 
         <div class="tips" id="result-tips"></div>
 
+        <div class="brand-logos">
+          <a href="https://www.instagram.com/jbsupporters_official/" target="_blank" rel="noopener noreferrer" class="brand-logo-link">
+            <img src="./assets/jb_supporters_official.png" alt="전북은행 대학생 서포터즈 공식 로고" />
+          </a>
+          <a href="https://www.instagram.com/jbs_jeonjin.zip/" target="_blank" rel="noopener noreferrer" class="brand-logo-link">
+            <img src="./assets/jbs_jeonjin_team.png" alt="전진난만 팀 로고" />
+          </a>
+        </div>
+
         <div class="result-actions">
-          <button id="instagram-btn" class="btn btn-secondary" type="button">
-            JB 서포터즈 인스타 바로가기
+          <button id="official-instagram-btn" class="btn btn-secondary" type="button">
+            서포터즈 공식 인스타
+          </button>
+          <button id="team-instagram-btn" class="btn btn-secondary" type="button">
+            전진난만 팀 인스타
           </button>
           <button id="story-share-btn" class="btn btn-secondary" type="button">
             인스타 스토리용 이미지 공유

@@ -1,0 +1,20 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgP" x1="40" y1="40" x2="600" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF9F3"/>
+      <stop offset="1" stop-color="#D7F2E6"/>
+    </linearGradient>
+  </defs>
+  <rect x="20" y="20" width="600" height="320" rx="28" fill="url(#bgP)"/>
+  <circle cx="500" cy="90" r="34" fill="#6CD3A8"/>
+  <circle cx="535" cy="120" r="18" fill="#2CBF80"/>
+  <rect x="90" y="90" width="110" height="160" rx="16" fill="#1D9A66"/>
+  <rect x="106" y="108" width="78" height="124" rx="10" fill="#F6FFFA"/>
+  <path d="M124 143L139 158L166 130" stroke="#1D9A66" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M124 186L139 201L166 173" stroke="#1D9A66" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="250" y="110" width="280" height="18" rx="9" fill="#1D9A66"/>
+  <rect x="250" y="146" width="220" height="18" rx="9" fill="#38B97E"/>
+  <rect x="250" y="182" width="250" height="18" rx="9" fill="#66CEA0"/>
+  <rect x="250" y="218" width="200" height="18" rx="9" fill="#90DDBA"/>
+  <text x="90" y="286" font-size="34" font-family="Pretendard, Arial, sans-serif" fill="#126745" font-weight="700">P 타입: 계획형 프로그래머</text>
+</svg>

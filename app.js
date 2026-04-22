@@ -103,7 +103,6 @@ const questions = [
 
 const OFFICIAL_INSTAGRAM_URL = 'https://www.instagram.com/jbsupporters_official/';
 const TEAM_INSTAGRAM_URL = 'https://www.instagram.com/jbs_jeonjin.zip/';
-const JBBANK_URL = 'https://www.jbbank.co.kr/';
 
 const resultMap = {
   EJ: {
@@ -242,7 +241,6 @@ const ui = {
   resultTips: document.getElementById('result-tips'),
   benefitBtn: document.getElementById('benefit-btn'),
   benefitBackBtn: document.getElementById('benefit-back-btn'),
-  benefitInlineBackBtn: document.getElementById('benefit-inline-back-btn'),
   benefitTypeThumb: document.getElementById('benefit-type-thumb'),
   benefitTypeLabel: document.getElementById('benefit-type-label'),
   benefitTypeName: document.getElementById('benefit-type-name'),
@@ -252,7 +250,6 @@ const ui = {
   benefitFeatureDesc: document.getElementById('benefit-feature-desc'),
   benefitGuideDesc: document.getElementById('benefit-guide-desc'),
   benefitTipText: document.getElementById('benefit-tip-text'),
-  benefitHomeBtn: document.getElementById('benefit-home-btn'),
   officialInstagramBtn: document.getElementById('official-instagram-btn'),
   teamInstagramBtn: document.getElementById('team-instagram-btn'),
   storyShareBtn: document.getElementById('story-share-btn'),
@@ -375,7 +372,6 @@ function renderBenefit(type) {
   ui.benefitFeatureDesc.textContent = data.feature.desc;
   ui.benefitGuideDesc.textContent = data.guideDesc;
   ui.benefitTipText.textContent = data.tip;
-  ui.benefitHomeBtn.href = JBBANK_URL;
 }
 
 function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -635,9 +631,6 @@ ui.benefitBtn.addEventListener('click', () => {
   setScreen('benefit');
 });
 ui.benefitBackBtn.addEventListener('click', () => {
-  setScreen('result');
-});
-ui.benefitInlineBackBtn.addEventListener('click', () => {
   setScreen('result');
 });
 ui.storyShareBtn.addEventListener('click', shareToInstagramStory);

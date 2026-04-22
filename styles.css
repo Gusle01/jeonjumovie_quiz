@@ -725,11 +725,19 @@ h1 {
   gap: 10px;
 }
 
-.benefit-home-btn {
+.benefit-store-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   text-decoration: none;
+  font-weight: 700;
+}
+
+.benefit-store-btn img {
+  width: 22px;
+  height: 22px;
+  flex: 0 0 auto;
 }
 
 #benefit-screen[data-type='EJ'] .benefit-type-name {

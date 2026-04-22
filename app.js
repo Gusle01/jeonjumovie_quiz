@@ -346,6 +346,7 @@ async function createResultCardBlob() {
   ctx.font = '800 136px Pretendard, sans-serif';
   ctx.fillText(data.mbtiTag, 540, 350);
 
+  ctx.textAlign = 'left';
   const resultName = data.title.replace(/^[^\p{Letter}\p{Number}가-힣]+/u, '');
   ctx.fillStyle = '#3459D6';
   ctx.font = '700 94px Pretendard, sans-serif';
@@ -365,6 +366,7 @@ async function createResultCardBlob() {
   ctx.fillText(data.mbtiDesc, 540, 1160);
   ctx.fillStyle = '#8D95A7';
   ctx.font = '600 52px Pretendard, sans-serif';
+  ctx.textAlign = 'center';
   ctx.fillText('JIFF MoneyBTI', 540, 1260);
 
   ctx.fillStyle = '#5A6172';

@@ -513,11 +513,15 @@ function downloadBlob(blob, filename) {
 
 async function shareToInstagramStory() {
   ui.storyShareBtn.disabled = true;
-  ui.storyShareBtn.textContent = '이미지 준비 중...';
+  const label = ui.storyShareBtn.querySelector('span');
+  if (label) {
+    label.textContent = '이미지 준비 중...';
+  }
 
   try {
     const blob = await createResultCardBlob();
     const filename = `jiff-moneybti-${Date.now()}.png`;
+    let shared = false;
 
     if (typeof File !== 'undefined') {
       const file = new File([blob], filename, { type: 'image/png' });
@@ -527,15 +531,34 @@ async function shareToInstagramStory() {
         files: [file],
       };
 
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share(shareData);
-        return;
+      if (typeof navigator.share === 'function') {
+        try {
+          if (typeof navigator.canShare === 'function' && navigator.canShare({ files: [file] })) {
+            await navigator.share(shareData);
+            shared = true;
+          } else {
+            await navigator.share({
+              title: shareData.title,
+              text: shareData.text,
+              url: TEAM_INSTAGRAM_URL,
+            });
+            shared = true;
+          }
+        } catch (error) {
+          const isAbort = error instanceof DOMException && error.name === 'AbortError';
+          if (isAbort) {
+            return;
+          }
+          shared = false;
+        }
       }
     }
 
-    downloadBlob(blob, filename);
-    window.open(TEAM_INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
-    window.alert('현재 환경에서는 직접 공유가 제한되어 결과 이미지를 저장했습니다. 인스타 스토리에서 업로드해 주세요.');
+    if (!shared) {
+      downloadBlob(blob, filename);
+      window.open(TEAM_INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
+      window.alert('결과 이미지를 저장했습니다. 인스타 스토리에서 업로드해 주세요.');
+    }
   } catch (error) {
     const isAbort = error instanceof DOMException && error.name === 'AbortError';
     if (!isAbort) {
@@ -543,7 +566,9 @@ async function shareToInstagramStory() {
     }
   } finally {
     ui.storyShareBtn.disabled = false;
-    ui.storyShareBtn.textContent = '인스타 스토리용 이미지 공유';
+    if (label) {
+      label.textContent = '결과 이미지 공유';
+    }
   }
 }
 

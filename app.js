@@ -107,7 +107,7 @@ const TEAM_INSTAGRAM_URL = 'https://www.instagram.com/jbs_jeonjin.zip/';
 const resultMap = {
   EJ: {
     title: '🎉 EJ형: 에너지 드라이버',
-    image: './assets/result-ej.png',
+    image: './assets/share-ej.png',
     shareImage: './assets/share-ej.png',
     imageAlt: 'EJ 유형 결과 대표 이미지',
     mbtiTag: 'EJ',
@@ -123,7 +123,7 @@ const resultMap = {
   },
   EP: {
     title: '🤝 EP형: 소셜 무버',
-    image: './assets/result-ep.png',
+    image: './assets/share-ep.png',
     shareImage: './assets/share-ep.png',
     imageAlt: 'EP 유형 결과 대표 이미지',
     mbtiTag: 'EP',
@@ -139,7 +139,7 @@ const resultMap = {
   },
   IJ: {
     title: '🧭 IJ형: 전략 큐레이터',
-    image: './assets/result-ij.png',
+    image: './assets/share-ij.png',
     shareImage: './assets/share-ij.png',
     imageAlt: 'IJ 유형 결과 대표 이미지',
     mbtiTag: 'IJ',
@@ -155,7 +155,7 @@ const resultMap = {
   },
   IP: {
     title: '🌙 IP형: 감성 아카이버',
-    image: './assets/result-ip.png',
+    image: './assets/share-ip.png',
     shareImage: './assets/share-ip.png',
     imageAlt: 'IP 유형 결과 대표 이미지',
     mbtiTag: 'IP',

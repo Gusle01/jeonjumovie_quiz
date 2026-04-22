@@ -475,46 +475,26 @@ function canvasToPngBlob(canvas) {
 async function createResultCardBlob() {
   const resultType = state.resultType || getTopResultType(state.score);
   const data = resultMap[resultType];
-  const canvas = document.createElement('canvas');
-  canvas.width = 1080;
-  canvas.height = 1920;
-  const ctx = canvas.getContext('2d');
+  try {
+    const response = await fetch(data.image, { cache: 'no-store' });
+    if (response.ok) {
+      return await response.blob();
+    }
+  } catch (_fetchError) {
+    // fetch가 막힌 환경(Safari 일부/인앱 브라우저)은 아래 canvas 폴백으로 처리
+  }
 
-  if (!ctx) {
+  const fallbackCanvas = document.createElement('canvas');
+  const typeImage = await loadImage(data.image);
+  fallbackCanvas.width = typeImage.width;
+  fallbackCanvas.height = typeImage.height;
+  const fallbackCtx = fallbackCanvas.getContext('2d');
+  if (!fallbackCtx) {
     throw new Error('Canvas context를 생성할 수 없습니다.');
   }
+  fallbackCtx.drawImage(typeImage, 0, 0);
 
-  ctx.fillStyle = '#1F64EA';
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.globalAlpha = 0.2;
-  drawRoundedRect(ctx, -120, -80, 520, 520, 260, '#6FA9FF');
-  drawRoundedRect(ctx, 770, 1220, 450, 450, 225, '#6FA9FF');
-  ctx.globalAlpha = 1;
-
-  drawCenteredFittedText(ctx, '전주국제영화제 X 전북은행 대학생 서포터즈', 120, 980, '700', 56, 36, '#FFFFFF');
-  drawCenteredFittedText(ctx, 'MoneyBTI 결과', 230, 980, '800', 96, 70, '#FFFFFF');
-
-  const panelX = 60;
-  const panelY = 300;
-  const panelWidth = 960;
-  const panelHeight = 1380;
-  drawRoundedRect(ctx, panelX, panelY, panelWidth, panelHeight, 36, '#EEF1F7');
-
-  try {
-    const typeImage = await loadImage(data.image);
-    drawImageContain(ctx, typeImage, panelX + 40, panelY + 40, panelWidth - 80, 1040);
-  } catch (_error) {
-    drawRoundedRect(ctx, panelX + 40, panelY + 40, panelWidth - 80, 1040, 24, '#E0E5EF');
-    drawCenteredFittedText(ctx, data.mbtiTag, 900, 760, '800', 260, 180, '#3459D6');
-  }
-
-  drawCenteredFittedText(ctx, data.title, 1430, 900, '800', 78, 52, '#3459D6');
-  drawCenteredFittedText(ctx, data.mbtiDesc, 1510, 900, '700', 62, 44, '#5A6172');
-
-  drawCenteredFittedText(ctx, '@jbsupporters_official  @jbs_jeonjin.zip', 1805, 980, '700', 56, 38, '#FFFFFF');
-  drawCenteredFittedText(ctx, '인스타그램에서 더 많은 현장 소식을 확인하세요', 1870, 980, '500', 46, 30, '#FFFFFF');
-
-  return canvasToPngBlob(canvas);
+  return canvasToPngBlob(fallbackCanvas);
 }
 
 async function createFallbackCardBlob() {
@@ -561,7 +541,8 @@ async function shareToInstagramStory() {
 
   try {
     const blob = await createResultCardBlob();
-    const filename = `jiff-moneybti-${Date.now()}.png`;
+    const resultType = state.resultType || getTopResultType(state.score);
+    const filename = `jiff-moneybti-${resultType}-${Date.now()}.png`;
     let shared = false;
 
     if (typeof File !== 'undefined') {

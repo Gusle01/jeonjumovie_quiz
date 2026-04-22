@@ -74,16 +74,18 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 18px;
   background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
-  padding: 16px;
+  height: 250px;
+  padding: 10px;
   overflow: hidden;
 }
 
 .start-team-logo {
   display: block;
   width: 100%;
-  height: auto;
-  max-height: 220px;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
+  transform: scale(1.07);
 }
 
 .start-official-badge {
@@ -293,8 +295,13 @@ h1 {
     padding: 18px 14px;
   }
 
+  .start-visual {
+    height: 200px;
+    padding: 8px;
+  }
+
   .start-team-logo {
-    max-height: 180px;
+    transform: scale(1.12);
   }
 
   .start-official-badge {

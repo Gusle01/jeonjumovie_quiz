@@ -321,7 +321,16 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
   ctx.fill();
 }
 
-function createResultCardBlob() {
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(new Error('이미지를 불러오지 못했습니다.'));
+    img.src = src;
+  });
+}
+
+async function createResultCardBlob() {
   const resultType = state.resultType || getTopResultType(state.score);
   const data = resultMap[resultType];
   const canvas = document.createElement('canvas');
@@ -333,68 +342,45 @@ function createResultCardBlob() {
     throw new Error('Canvas context를 생성할 수 없습니다.');
   }
 
-  const gradient = ctx.createLinearGradient(0, 0, 1080, 1920);
-  gradient.addColorStop(0, '#0D4CDE');
-  gradient.addColorStop(0.55, '#1D6FF2');
-  gradient.addColorStop(1, '#5CAEFF');
-  ctx.fillStyle = gradient;
+  // Minimal share card style: centered text + character/visual
+  ctx.fillStyle = '#F7F8FA';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.fillStyle = 'rgba(255,255,255,0.16)';
-  ctx.beginPath();
-  ctx.arc(980, 220, 260, 0, Math.PI * 2);
-  ctx.fill();
-  ctx.beginPath();
-  ctx.arc(140, 1730, 250, 0, Math.PI * 2);
-  ctx.fill();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#5A6172';
+  ctx.font = '600 66px Pretendard, sans-serif';
+  ctx.fillText('당신의 영화제 유형은', 540, 170);
 
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '700 60px Pretendard, sans-serif';
-  ctx.fillText('전주국제영화제 X 전북은행 대학생 서포터즈', 82, 142);
-  ctx.font = '800 98px Pretendard, sans-serif';
-  ctx.fillText('MoneyBTI 결과', 82, 252);
+  ctx.fillStyle = '#3E4A66';
+  ctx.font = '800 136px Pretendard, sans-serif';
+  ctx.fillText(data.mbtiTag, 540, 350);
 
-  const cardX = 60;
-  const cardY = 340;
-  const cardW = 960;
-  const cardH = 1120;
-  drawRoundedRect(ctx, cardX, cardY, cardW, cardH, 26, '#ECEFF4');
+  const resultName = data.title.replace(/^[^\p{Letter}\p{Number}가-힣]+/u, '');
+  ctx.fillStyle = '#3459D6';
+  ctx.font = '700 94px Pretendard, sans-serif';
+  wrapText(ctx, resultName, 140, 500, 800, 104);
 
-  const contentX = cardX + 50;
-  const contentMaxW = cardW - 100;
-  let y = cardY + 95;
+  ctx.fillStyle = '#B88B15';
+  ctx.font = '600 86px Pretendard, sans-serif';
+  ctx.fillText(data.mbtiDesc, 540, 670);
 
-  ctx.fillStyle = '#1C4FBF';
-  ctx.font = '700 58px Pretendard, sans-serif';
-  y = wrapText(ctx, `${data.mbtiTag} · ${data.mbtiDesc}`, contentX, y, contentMaxW, 66);
+  const visual = await loadImage(data.image);
+  const boxW = 700;
+  const boxH = 840;
+  const boxX = (1080 - boxW) / 2;
+  const boxY = 760;
+  const ratio = Math.min(boxW / visual.width, boxH / visual.height);
+  const drawW = visual.width * ratio;
+  const drawH = visual.height * ratio;
+  const drawX = boxX + (boxW - drawW) / 2;
+  const drawY = boxY + (boxH - drawH) / 2;
+  ctx.drawImage(visual, drawX, drawY, drawW, drawH);
 
-  ctx.font = '800 86px Pretendard, sans-serif';
-  y = wrapText(ctx, data.title, contentX, y + 10, contentMaxW, 96);
-
-  ctx.fillStyle = '#2A364B';
-  ctx.font = '500 62px Pretendard, sans-serif';
-  y += 22;
-  data.description.split('\n').forEach((line) => {
-    y = wrapText(ctx, line, contentX, y, contentMaxW, 72);
-  });
-
-  ctx.fillStyle = '#1C4FBF';
-  ctx.font = '700 68px Pretendard, sans-serif';
-  y += 20;
-  y = wrapText(ctx, '추천 팁', contentX, y, contentMaxW, 76);
-
-  ctx.fillStyle = '#2F3F5B';
-  ctx.font = '500 58px Pretendard, sans-serif';
-  y += 6;
-  data.tips.forEach((tip) => {
-    y = wrapText(ctx, `• ${tip}`, contentX, y, contentMaxW, 70);
-  });
-
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '600 58px Pretendard, sans-serif';
-  ctx.fillText('@jbsupporters_official  @jbs_jeonjin.zip', 82, 1740);
-  ctx.font = '500 54px Pretendard, sans-serif';
-  ctx.fillText('인스타그램에서 더 많은 현장 소식을 확인하세요', 82, 1820);
+  ctx.fillStyle = '#5A6172';
+  ctx.font = '600 52px Pretendard, sans-serif';
+  ctx.fillText('@jbsupporters_official  @jbs_jeonjin.zip', 540, 1760);
+  ctx.font = '500 46px Pretendard, sans-serif';
+  ctx.fillText('전주국제영화제 MoneyBTI 결과 공유', 540, 1830);
 
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => {

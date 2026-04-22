@@ -321,15 +321,6 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
   ctx.fill();
 }
 
-function loadImage(src) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = () => reject(new Error('이미지를 불러오지 못했습니다.'));
-    img.src = src;
-  });
-}
-
 async function createResultCardBlob() {
   const resultType = state.resultType || getTopResultType(state.score);
   const data = resultMap[resultType];
@@ -364,17 +355,17 @@ async function createResultCardBlob() {
   ctx.font = '600 86px Pretendard, sans-serif';
   ctx.fillText(data.mbtiDesc, 540, 670);
 
-  const visual = await loadImage(data.image);
-  const boxW = 700;
-  const boxH = 840;
-  const boxX = (1080 - boxW) / 2;
-  const boxY = 760;
-  const ratio = Math.min(boxW / visual.width, boxH / visual.height);
-  const drawW = visual.width * ratio;
-  const drawH = visual.height * ratio;
-  const drawX = boxX + (boxW - drawW) / 2;
-  const drawY = boxY + (boxH - drawH) / 2;
-  ctx.drawImage(visual, drawX, drawY, drawW, drawH);
+  // Draw a robust center panel (no external image dependency)
+  drawRoundedRect(ctx, 190, 760, 700, 700, 40, '#ECEFF4');
+  ctx.fillStyle = '#3459D6';
+  ctx.font = '800 220px Pretendard, sans-serif';
+  ctx.fillText(data.mbtiTag, 540, 1060);
+  ctx.fillStyle = '#5A6172';
+  ctx.font = '600 68px Pretendard, sans-serif';
+  ctx.fillText(data.mbtiDesc, 540, 1160);
+  ctx.fillStyle = '#8D95A7';
+  ctx.font = '600 52px Pretendard, sans-serif';
+  ctx.fillText('JIFF MoneyBTI', 540, 1260);
 
   ctx.fillStyle = '#5A6172';
   ctx.font = '600 52px Pretendard, sans-serif';
@@ -410,19 +401,23 @@ async function shareToInstagramStory() {
 
   try {
     const blob = await createResultCardBlob();
-    const file = new File([blob], `jiff-moneybti-${Date.now()}.png`, { type: 'image/png' });
-    const shareData = {
-      title: 'JIFF MoneyBTI 결과',
-      text: '전주국제영화제 X 전북은행 대학생 서포터즈 MoneyBTI 결과입니다. @jbsupporters_official @jbs_jeonjin.zip',
-      files: [file],
-    };
+    const filename = `jiff-moneybti-${Date.now()}.png`;
 
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share(shareData);
-      return;
+    if (typeof File !== 'undefined') {
+      const file = new File([blob], filename, { type: 'image/png' });
+      const shareData = {
+        title: 'JIFF MoneyBTI 결과',
+        text: '전주국제영화제 X 전북은행 대학생 서포터즈 MoneyBTI 결과입니다. @jbsupporters_official @jbs_jeonjin.zip',
+        files: [file],
+      };
+
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share(shareData);
+        return;
+      }
     }
 
-    downloadBlob(blob, file.name);
+    downloadBlob(blob, filename);
     window.open(TEAM_INSTAGRAM_URL, '_blank', 'noopener,noreferrer');
     window.alert('현재 환경에서는 직접 공유가 제한되어 결과 이미지를 저장했습니다. 인스타 스토리에서 업로드해 주세요.');
   } catch (error) {

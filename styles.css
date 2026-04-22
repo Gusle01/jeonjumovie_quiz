@@ -435,6 +435,12 @@ h1 {
   font-weight: 700;
 }
 
+.sok-emphasis {
+  color: #ffdd63;
+  font-weight: 800;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.18);
+}
+
 .start-cta-fixed,
 .result-cta-fixed {
   position: fixed;

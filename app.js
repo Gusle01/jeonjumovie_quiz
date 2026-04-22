@@ -337,6 +337,7 @@ function renderResult() {
   const type = getTopResultType(state.score);
   const data = resultMap[type];
   state.resultType = type;
+  ui.result.dataset.type = type;
 
   ui.resultVisual.src = data.image;
   ui.resultVisual.alt = data.imageAlt;

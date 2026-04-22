@@ -68,6 +68,45 @@ h1 {
   line-height: 1.5;
 }
 
+.start-visual {
+  position: relative;
+  margin-top: 2px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #ffffff 0%, #f6f9ff 100%);
+  padding: 16px;
+  overflow: hidden;
+}
+
+.start-team-logo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+}
+
+.start-official-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 120px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid #d6def1;
+  background: rgba(255, 255, 255, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+}
+
+.start-official-badge img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
 .info-card {
   margin-top: 6px;
   padding: 18px;
@@ -252,6 +291,15 @@ h1 {
 @media (max-width: 420px) {
   .app-shell {
     padding: 18px 14px;
+  }
+
+  .start-team-logo {
+    max-height: 180px;
+  }
+
+  .start-official-badge {
+    width: 98px;
+    height: 38px;
   }
 
   .answer-btn {

@@ -63,6 +63,22 @@ const questions = [
       { text: '남은 금액은 다음 영화제 준비 자금으로 남긴다', type: 'P' },
     ],
   },
+  {
+    id: 9,
+    title: '현장 이벤트 부스에서 한정 혜택을 봤을 때 나는?',
+    answers: [
+      { text: '지금 아니면 못 받으니 바로 참여한다', type: 'C' },
+      { text: '조건과 실제 혜택을 먼저 확인하고 결정한다', type: 'P' },
+    ],
+  },
+  {
+    id: 10,
+    title: '영화제 마지막 저녁, 추가로 한 편 더 볼 기회가 생겼다.',
+    answers: [
+      { text: '체력보다 아쉬움이 크다. 한 편 더 본다', type: 'C' },
+      { text: '내일 일정을 위해 여기서 마무리하고 귀가한다', type: 'P' },
+    ],
+  },
 ];
 
 const INSTAGRAM_URL = 'https://www.instagram.com/jbs_jeonjin.zip/';

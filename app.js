@@ -86,27 +86,29 @@ const TEAM_INSTAGRAM_URL = 'https://www.instagram.com/jbs_jeonjin.zip/';
 
 const resultMap = {
   C: {
-    title: 'C 타입: Cinema Flow Collector',
+    title: '🎬 축제형 영화 탐험가',
     image: './assets/result-c.svg',
     imageAlt: 'C 타입 결과 대표 이미지',
     description:
-      '영화제의 순간과 경험에 아낌없이 투자하는 타입입니다.\n상영, 대화, 굿즈, 공간까지 전체 분위기를 깊게 즐기는 편이에요.',
+      '영화제를 통해 새로운 사람들과 연결되고, 낯선 이야기에 영감을 얻는 타입!\n다양한 장르를 넘나들며 영화제의 에너지를 온몸으로 흡수합니다.\n굿즈도 충동구매 한 번쯤은 있을 걸요?',
+    tipsTitle: '나에게 맞는 영화제 꿀팁',
     tips: [
-      '하루 상한선(예: 7만원)만 정하면 만족도와 통제가 함께 올라갑니다.',
-      '즉흥 관람 1편 + 확정 관람 2편 조합으로 변동성을 줄여보세요.',
-      '굿즈는 마지막 날 한 번 더 점검하면 중복 구매를 줄일 수 있습니다.',
+      '다양한 장르 도전을 두려워하지 마세요!',
+      'GV(대화 이벤트)에 적극 참여해보세요.',
+      '굿즈 예산은 미리 정해두는 게 좋아요.',
     ],
   },
   P: {
-    title: 'P 타입: Practical Program Planner',
+    title: '🧭 전략형 영화 큐레이터',
     image: './assets/result-p.svg',
     imageAlt: 'P 타입 결과 대표 이미지',
     description:
-      '예산과 동선을 먼저 설계하는 실속형 타입입니다.\n최적의 선택으로 많은 작품을 안정적으로 즐기는 데 강점이 있어요.',
+      '관람 동선과 예산을 정확하게 세우는 타입입니다.\n한정된 시간 안에서 최대의 만족을 뽑아내는 계획형 관람자예요.\n효율과 만족을 모두 잡는 영화제 마스터에 가깝습니다.',
+    tipsTitle: '나에게 맞는 영화제 꿀팁',
     tips: [
-      '핵심 기대작 1~2편은 예산 예외 항목으로 두면 만족도가 높아집니다.',
-      '동선 효율이 좋아도 휴식 슬롯을 1개 넣어 체력 저하를 막아보세요.',
-      '예산표에 식비를 별도 항목으로 두면 계획이 더 정확해집니다.',
+      '보고 싶은 작품은 우선순위를 3단계로 나눠보세요.',
+      '상영관 이동 시간을 고려해 1일 3편 내외로 구성하세요.',
+      '예산표에 식비/교통비를 분리하면 훨씬 정확해져요.',
     ],
   },
 };
@@ -200,9 +202,18 @@ function renderResult() {
   ui.resultTitle.textContent = data.title;
   ui.resultDesc.textContent = data.description;
   ui.resultTips.innerHTML = `
-    <h3>추천 팁</h3>
+    <h3>${data.tipsTitle || '나에게 맞는 영화제 꿀팁'}</h3>
     <ul>
-      ${data.tips.map((tip) => `<li>${tip}</li>`).join('')}
+      ${data.tips
+        .map(
+          (tip) => `
+            <li>
+              <span class="tip-icon">▹</span>
+              <span class="tip-text">${tip}</span>
+            </li>
+          `
+        )
+        .join('')}
     </ul>
   `;
 }

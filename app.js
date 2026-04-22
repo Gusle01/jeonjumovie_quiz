@@ -321,6 +321,15 @@ function drawRoundedRect(ctx, x, y, width, height, radius, fillStyle) {
   ctx.fill();
 }
 
+function setFittedFont(ctx, text, maxWidth, weight, startSize, minSize) {
+  let size = startSize;
+  ctx.font = `${weight} ${size}px Pretendard, sans-serif`;
+  while (size > minSize && ctx.measureText(text).width > maxWidth) {
+    size -= 2;
+    ctx.font = `${weight} ${size}px Pretendard, sans-serif`;
+  }
+}
+
 async function createResultCardBlob() {
   const resultType = state.resultType || getTopResultType(state.score);
   const data = resultMap[resultType];
@@ -346,14 +355,14 @@ async function createResultCardBlob() {
   ctx.font = '800 136px Pretendard, sans-serif';
   ctx.fillText(data.mbtiTag, 540, 350);
 
-  ctx.textAlign = 'left';
   const resultName = data.title.replace(/^[^\p{Letter}\p{Number}가-힣]+/u, '');
+  ctx.textAlign = 'center';
   ctx.fillStyle = '#3459D6';
-  ctx.font = '700 94px Pretendard, sans-serif';
-  wrapText(ctx, resultName, 140, 500, 800, 104);
+  setFittedFont(ctx, resultName, 880, '700', 94, 60);
+  ctx.fillText(resultName, 540, 520);
 
   ctx.fillStyle = '#B88B15';
-  ctx.font = '600 86px Pretendard, sans-serif';
+  setFittedFont(ctx, data.mbtiDesc, 880, '600', 86, 54);
   ctx.fillText(data.mbtiDesc, 540, 670);
 
   // Draw a robust center panel (no external image dependency)

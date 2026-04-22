@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./styles.css?v=20260422i" />
+    <link rel="stylesheet" href="./styles.css?v=20260422j" />
   </head>
   <body>
     <main class="app-shell">
@@ -102,21 +102,67 @@
       </section>
 
       <section id="benefit-screen" class="screen benefit-screen" aria-live="polite">
-        <header class="benefit-header">
-          <button id="benefit-back-btn" class="btn btn-primary benefit-back-fixed" type="button">결과화면으로 돌아가기</button>
-        </header>
+        <p class="badge">은행 혜택 추천</p>
 
-        <p class="badge">쏙뱅크 추천</p>
-        <div class="benefit-logo-wrap">
-          <img src="./assets/sokbank-logo.png" alt="쏙뱅크 앱 로고" class="benefit-logo" width="440" height="390" />
-        </div>
-        <h2 id="benefit-title" class="benefit-title"></h2>
-        <p id="benefit-subtitle" class="benefit-subtitle"></p>
+        <article class="benefit-hero-card">
+          <div class="benefit-logo-wrap">
+            <img src="./assets/sokbank-logo.png" alt="쏙뱅크 앱 로고" class="benefit-logo" width="440" height="390" />
+          </div>
+          <p class="benefit-hero-caption">전북은행 앱에서 확인하는 나만의 혜택</p>
+        </article>
 
-        <div id="benefit-groups" class="benefit-groups"></div>
+        <article class="benefit-type-card">
+          <img id="benefit-type-thumb" class="benefit-type-thumb" src="./assets/share-ej.png" alt="유형 이미지" />
+          <div class="benefit-type-text">
+            <p id="benefit-type-label" class="benefit-type-label"></p>
+            <h2 id="benefit-type-name" class="benefit-type-name"></h2>
+          </div>
+        </article>
+
+        <article class="benefit-reason-card">
+          <h3>💡 왜 이 혜택이 맞을까?</h3>
+          <p id="benefit-reason-text"></p>
+        </article>
+
+        <article class="benefit-feature-card">
+          <header class="benefit-feature-head">
+            <span class="benefit-feature-icon">📱</span>
+            <h3 id="benefit-feature-title"></h3>
+            <span id="benefit-feature-badge" class="benefit-feature-badge"></span>
+          </header>
+          <p id="benefit-feature-desc"></p>
+        </article>
+
+        <article class="benefit-guide-card">
+          <h3>📱 앱에서 이렇게 확인할 수 있어요</h3>
+          <div class="benefit-guide-visual" aria-hidden="true">행운의 룰렛</div>
+          <p id="benefit-guide-desc"></p>
+        </article>
+
+        <article class="benefit-tip-card">
+          <p id="benefit-tip-text"></p>
+        </article>
+
+        <article class="benefit-cta-card">
+          <h3>전북은행 앱에서 확인해보세요</h3>
+          <p>전북은행 모바일뱅킹 앱에서 더 많은 혜택과 이벤트를 확인할 수 있어요. 지금 바로 확인해보세요.</p>
+          <div class="benefit-cta-actions">
+            <a
+              id="benefit-home-btn"
+              class="btn btn-primary benefit-home-btn"
+              href="https://www.jbbank.co.kr/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >전북은행 홈페이지</a
+            >
+            <button id="benefit-inline-back-btn" class="btn btn-secondary" type="button">결과로 돌아가기</button>
+          </div>
+        </article>
+
+        <button id="benefit-back-btn" class="btn btn-primary benefit-back-fixed" type="button">결과 화면으로 돌아가기</button>
       </section>
     </main>
 
-    <script src="./app.js?v=20260422j" defer></script>
+    <script src="./app.js?v=20260422k" defer></script>
   </body>
 </html>

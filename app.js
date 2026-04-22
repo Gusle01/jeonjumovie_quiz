@@ -103,6 +103,7 @@ const questions = [
 
 const OFFICIAL_INSTAGRAM_URL = 'https://www.instagram.com/jbsupporters_official/';
 const TEAM_INSTAGRAM_URL = 'https://www.instagram.com/jbs_jeonjin.zip/';
+const JBBANK_URL = 'https://www.jbbank.co.kr/';
 
 const resultMap = {
   EJ: {
@@ -173,64 +174,53 @@ const resultMap = {
 
 const sokBankBenefitMap = {
   EJ: {
-    title: '🎉 EJ형에게 맞는 쏙뱅크 혜택',
-    subtitle:
-      '에너지 있게 움직이는 EJ형이라면\n현장 결제/이벤트 참여/즉시 혜택 체감형 기능을 우선 확인해보세요.',
-    groups: [
-      {
-        title: '현장 결제·소비 체감 혜택',
-        items: ['카드/간편결제 즉시 할인 이벤트', '영화·문화·카페 카테고리 프로모션', '월별 소비 미션형 리워드'],
-      },
-      {
-        title: '놓치기 쉬운 기능',
-        items: ['쏙뱅크 앱 내 진행 중 이벤트 모아보기', '혜택 알림 설정', '실적/조건 달성 현황 한 번에 확인'],
-      },
-    ],
+    typeLabel: 'EJ 유형',
+    typeName: '⚡ 에너지 드라이버',
+    reason:
+      '빠르게 참여하고 즉시 보상받는 구조를 선호해서, 지금 바로 체감 가능한 참여형 혜택이 특히 잘 맞아요.',
+    feature: {
+      title: 'JB앱테크',
+      badge: '즉시 적립',
+      desc: '앱에서 간단한 미션만 수행해도 포인트 적립이 가능해요. 빠르게 참여하고 바로 보상받는 구조에 딱 맞습니다.',
+    },
+    guideDesc: '전북은행 앱 혜택 메뉴에서 오늘 진행 중인 적립형 이벤트와 참여 미션을 바로 확인할 수 있어요.',
+    tip: 'Tip: 앱 알림을 켜두면 이벤트 시작 소식을 빠르게 받아 선착순 혜택을 놓치지 않아요.',
   },
   EP: {
-    title: '🤝 EP형에게 맞는 쏙뱅크 혜택',
-    subtitle:
-      '사람들과 함께 움직이는 EP형이라면\n공유·모임·생활형 혜택 중심으로 구성해보면 좋아요.',
-    groups: [
-      {
-        title: '동행/모임 소비 혜택',
-        items: ['외식·배달·카페 생활 혜택', '교통/택시 이동 관련 할인', '주말/특정 요일 프로모션'],
-      },
-      {
-        title: '추천 활용 루틴',
-        items: ['영화제 기간 전용 예산 한도 설정', '친구와 정산 전 지출 분류 확인', '혜택 적용 가능한 결제수단 우선 사용'],
-      },
-    ],
+    typeLabel: 'EP 유형',
+    typeName: '🤝 소셜 무버',
+    reason: '사람들과 함께 움직일 때 만족도가 높아서, 생활/모임 중심의 공유형 혜택이 가장 효율적이에요.',
+    feature: {
+      title: '생활 제휴 혜택',
+      badge: '모임 활용',
+      desc: '카페, 외식, 교통 등 일상 소비 영역 혜택을 모임 일정과 함께 쓰면 체감이 커요.',
+    },
+    guideDesc: '혜택 메뉴에서 카테고리별 이벤트를 확인하고, 영화제 동선에 맞는 제휴 혜택을 먼저 저장해두세요.',
+    tip: 'Tip: 동행 인원과 지출 카테고리를 먼저 정하면 혜택 적용 가능한 결제 수단을 고르기 쉬워요.',
   },
   IJ: {
-    title: '🧭 IJ형에게 맞는 쏙뱅크 혜택',
-    subtitle:
-      '계획형 IJ라면 조건/실적/예산 관리가 쉬운 혜택이 잘 맞습니다.\n사전에 구조를 세팅해두면 효율이 높아요.',
-    groups: [
-      {
-        title: '계획형 관리 혜택',
-        items: ['소비 리포트/카테고리 분석', '자동이체/고정지출 관리', '목표 예산 설정 기능'],
-      },
-      {
-        title: '체크 포인트',
-        items: ['혜택 조건 달성률 주간 점검', '카드 실적 구간 미리 확인', '지출 알림으로 예산 이탈 방지'],
-      },
-    ],
+    typeLabel: 'IJ 유형',
+    typeName: '🧭 전략 큐레이터',
+    reason: '조건·실적·예산을 미리 설계하는 성향이라, 구조적으로 관리 가능한 계획형 혜택과 궁합이 좋아요.',
+    feature: {
+      title: '소비 리포트 + 목표관리',
+      badge: '계획 최적화',
+      desc: '카테고리별 소비 흐름을 확인하고 목표 예산을 세우면 혜택 활용 효율을 안정적으로 높일 수 있어요.',
+    },
+    guideDesc: '앱의 소비 분석 화면에서 항목별 지출을 점검하고, 혜택 조건 달성률을 함께 관리해보세요.',
+    tip: 'Tip: 영화제 기간 전용 예산을 따로 설정하면 티켓/식비/굿즈 지출을 균형 있게 유지할 수 있어요.',
   },
   IP: {
-    title: '🌙 IP형에게 맞는 쏙뱅크 혜택',
-    subtitle:
-      '내 페이스를 중시하는 IP형이라면\n필요할 때 바로 쓰는 유연한 혜택과 간단한 관리 기능이 적합합니다.',
-    groups: [
-      {
-        title: '가볍게 쓰기 좋은 혜택',
-        items: ['소액 결제/생활 영역 혜택', '간단한 잔액·소비 확인 위젯', '즉시 확인 가능한 알림형 혜택'],
-      },
-      {
-        title: '부담 없는 관리법',
-        items: ['하루 1회 소비 요약 확인', '혜택 대상 가맹점만 선택적으로 사용', '영화제 기간 임시 예산만 간단 설정'],
-      },
-    ],
+    typeLabel: 'IP 유형',
+    typeName: '🌿 감성 아카이버',
+    reason: '내 페이스를 지키며 깊게 경험하는 타입이라, 필요할 때 가볍게 활용하는 유연한 혜택이 잘 맞아요.',
+    feature: {
+      title: '소액 생활 혜택',
+      badge: '부담 없이',
+      desc: '작은 소비에도 적용되는 생활 혜택 중심으로 사용하면, 흐름을 깨지 않고 꾸준히 체감할 수 있어요.',
+    },
+    guideDesc: '앱 혜택 탭에서 자주 쓰는 생활 카테고리를 즐겨찾기해두면 필요한 순간 빠르게 확인할 수 있어요.',
+    tip: 'Tip: 알림은 최소한으로 설정하고, 하루 한 번만 혜택 탭을 확인하는 루틴으로 부담 없이 관리해보세요.',
   },
 };
 
@@ -252,9 +242,17 @@ const ui = {
   resultTips: document.getElementById('result-tips'),
   benefitBtn: document.getElementById('benefit-btn'),
   benefitBackBtn: document.getElementById('benefit-back-btn'),
-  benefitTitle: document.getElementById('benefit-title'),
-  benefitSubtitle: document.getElementById('benefit-subtitle'),
-  benefitGroups: document.getElementById('benefit-groups'),
+  benefitInlineBackBtn: document.getElementById('benefit-inline-back-btn'),
+  benefitTypeThumb: document.getElementById('benefit-type-thumb'),
+  benefitTypeLabel: document.getElementById('benefit-type-label'),
+  benefitTypeName: document.getElementById('benefit-type-name'),
+  benefitReasonText: document.getElementById('benefit-reason-text'),
+  benefitFeatureTitle: document.getElementById('benefit-feature-title'),
+  benefitFeatureBadge: document.getElementById('benefit-feature-badge'),
+  benefitFeatureDesc: document.getElementById('benefit-feature-desc'),
+  benefitGuideDesc: document.getElementById('benefit-guide-desc'),
+  benefitTipText: document.getElementById('benefit-tip-text'),
+  benefitHomeBtn: document.getElementById('benefit-home-btn'),
   officialInstagramBtn: document.getElementById('official-instagram-btn'),
   teamInstagramBtn: document.getElementById('team-instagram-btn'),
   storyShareBtn: document.getElementById('story-share-btn'),
@@ -364,21 +362,20 @@ function renderResult() {
 function renderBenefit(type) {
   const fallback = sokBankBenefitMap.EP;
   const data = sokBankBenefitMap[type] || fallback;
+  const resultData = resultMap[type] || resultMap.EP;
 
-  ui.benefitTitle.textContent = data.title;
-  ui.benefitSubtitle.textContent = data.subtitle;
-  ui.benefitGroups.innerHTML = data.groups
-    .map(
-      (group) => `
-        <article class="benefit-group">
-          <h3>${group.title}</h3>
-          <ul>
-            ${group.items.map((item) => `<li>${item}</li>`).join('')}
-          </ul>
-        </article>
-      `
-    )
-    .join('');
+  ui.benefit.dataset.type = type;
+  ui.benefitTypeThumb.src = resultData.image;
+  ui.benefitTypeThumb.alt = `${type} 유형 이미지`;
+  ui.benefitTypeLabel.textContent = data.typeLabel;
+  ui.benefitTypeName.textContent = data.typeName;
+  ui.benefitReasonText.textContent = data.reason;
+  ui.benefitFeatureTitle.textContent = data.feature.title;
+  ui.benefitFeatureBadge.textContent = data.feature.badge;
+  ui.benefitFeatureDesc.textContent = data.feature.desc;
+  ui.benefitGuideDesc.textContent = data.guideDesc;
+  ui.benefitTipText.textContent = data.tip;
+  ui.benefitHomeBtn.href = JBBANK_URL;
 }
 
 function wrapText(ctx, text, x, y, maxWidth, lineHeight) {
@@ -638,6 +635,9 @@ ui.benefitBtn.addEventListener('click', () => {
   setScreen('benefit');
 });
 ui.benefitBackBtn.addEventListener('click', () => {
+  setScreen('result');
+});
+ui.benefitInlineBackBtn.addEventListener('click', () => {
   setScreen('result');
 });
 ui.storyShareBtn.addEventListener('click', shareToInstagramStory);

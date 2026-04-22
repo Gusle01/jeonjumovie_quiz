@@ -387,6 +387,23 @@ h1 {
   gap: 10px;
 }
 
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.icon-btn img {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+}
+
+.icon-btn span {
+  display: inline-block;
+}
+
 .brand-logos {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -622,6 +639,11 @@ h1 {
   .benefit-group ul {
     font-size: 14px;
     line-height: 1.55;
+  }
+
+  .icon-btn img {
+    width: 18px;
+    height: 18px;
   }
 
   .tips h3 {

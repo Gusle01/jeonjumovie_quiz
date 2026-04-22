@@ -330,6 +330,15 @@ function setFittedFont(ctx, text, maxWidth, weight, startSize, minSize) {
   }
 }
 
+function drawCenteredFittedText(ctx, text, y, maxWidth, weight, startSize, minSize, color) {
+  setFittedFont(ctx, text, maxWidth, weight, startSize, minSize);
+  const width = ctx.measureText(text).width;
+  const x = (1080 - width) / 2;
+  ctx.fillStyle = color;
+  ctx.textAlign = 'left';
+  ctx.fillText(text, x, y);
+}
+
 async function createResultCardBlob() {
   const resultType = state.resultType || getTopResultType(state.score);
   const data = resultMap[resultType];
@@ -346,43 +355,21 @@ async function createResultCardBlob() {
   ctx.fillStyle = '#F7F8FA';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#5A6172';
-  ctx.font = '600 66px Pretendard, sans-serif';
-  ctx.fillText('당신의 영화제 유형은', 540, 170);
-
-  ctx.fillStyle = '#3E4A66';
-  ctx.font = '800 136px Pretendard, sans-serif';
-  ctx.fillText(data.mbtiTag, 540, 350);
+  drawCenteredFittedText(ctx, '당신의 영화제 유형은', 170, 920, '600', 66, 46, '#5A6172');
+  drawCenteredFittedText(ctx, data.mbtiTag, 350, 920, '800', 136, 98, '#3E4A66');
 
   const resultName = data.title.replace(/^[^\p{Letter}\p{Number}가-힣]+/u, '');
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#3459D6';
-  setFittedFont(ctx, resultName, 880, '700', 94, 60);
-  ctx.fillText(resultName, 540, 520);
-
-  ctx.fillStyle = '#B88B15';
-  setFittedFont(ctx, data.mbtiDesc, 880, '600', 86, 54);
-  ctx.fillText(data.mbtiDesc, 540, 670);
+  drawCenteredFittedText(ctx, resultName, 520, 920, '700', 94, 54, '#3459D6');
+  drawCenteredFittedText(ctx, data.mbtiDesc, 670, 920, '600', 86, 50, '#B88B15');
 
   // Draw a robust center panel (no external image dependency)
   drawRoundedRect(ctx, 190, 760, 700, 700, 40, '#ECEFF4');
-  ctx.fillStyle = '#3459D6';
-  ctx.font = '800 220px Pretendard, sans-serif';
-  ctx.fillText(data.mbtiTag, 540, 1060);
-  ctx.fillStyle = '#5A6172';
-  ctx.font = '600 68px Pretendard, sans-serif';
-  ctx.fillText(data.mbtiDesc, 540, 1160);
-  ctx.fillStyle = '#8D95A7';
-  ctx.font = '600 52px Pretendard, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.fillText('JIFF MoneyBTI', 540, 1260);
+  drawCenteredFittedText(ctx, data.mbtiTag, 1060, 620, '800', 220, 170, '#3459D6');
+  drawCenteredFittedText(ctx, data.mbtiDesc, 1160, 620, '600', 68, 48, '#5A6172');
+  drawCenteredFittedText(ctx, 'JIFF MoneyBTI', 1260, 620, '600', 52, 38, '#8D95A7');
 
-  ctx.fillStyle = '#5A6172';
-  ctx.font = '600 52px Pretendard, sans-serif';
-  ctx.fillText('@jbsupporters_official  @jbs_jeonjin.zip', 540, 1760);
-  ctx.font = '500 46px Pretendard, sans-serif';
-  ctx.fillText('전주국제영화제 MoneyBTI 결과 공유', 540, 1830);
+  drawCenteredFittedText(ctx, '@jbsupporters_official  @jbs_jeonjin.zip', 1760, 980, '600', 52, 40, '#5A6172');
+  drawCenteredFittedText(ctx, '전주국제영화제 MoneyBTI 결과 공유', 1830, 980, '500', 46, 34, '#5A6172');
 
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => {

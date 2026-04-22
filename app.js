@@ -1,82 +1,102 @@
 const questions = [
   {
     id: 1,
-    title: '영화제 첫날, 가장 먼저 결제하고 싶은 것은?',
+    title: '영화제 티켓을 예매할 때 나는?',
     answers: [
-      { text: '보고 싶던 GV 상영작부터 예매한다', type: 'C' },
-      { text: '일단 패스/패키지부터 계산해서 가장 이득인 조합을 고른다', type: 'P' },
+      { text: '오픈과 동시에 예매! 보고 싶은 작품은 무조건 선점', type: 'P' },
+      { text: '여유롭게 현장에서 사거나 취소표 노림', type: 'C' },
+      { text: '지인과 함께 볼 작품 먼저 맞추고 예매', type: 'C' },
+      { text: '평점·리뷰 꼼꼼히 보고 신중하게 결정', type: 'P' },
     ],
   },
   {
     id: 2,
-    title: '영화제 굿즈를 보면 나는?',
+    title: '영화제 기간, 하루 몇 편을 볼 계획인가요?',
     answers: [
-      { text: '한정판이면 고민 없이 장바구니에 담는다', type: 'C' },
-      { text: '진짜 자주 쓸 것만 고르고 예산을 지킨다', type: 'P' },
+      { text: '1편! 여유롭게 제대로 즐기기', type: 'P' },
+      { text: '2~3편, 적당히 알차게', type: 'P' },
+      { text: '4편 이상! 영화제는 몰아보는 맛', type: 'C' },
+      { text: '그날그날 기분에 따라 달라요', type: 'C' },
     ],
   },
   {
     id: 3,
-    title: '상영 사이 공백 시간 1시간이 생겼다.',
+    title: '영화 관람 후 나의 행동은?',
     answers: [
-      { text: '근처 카페에서 영화 이야기하며 여유를 즐긴다', type: 'C' },
-      { text: '다음 동선 체크하고 이동 시간을 최소화한다', type: 'P' },
+      { text: '바로 SNS에 후기 올리기', type: 'C' },
+      { text: '혼자 여운 느끼며 조용히 있기', type: 'P' },
+      { text: '친구들과 카페에서 영화 얘기 나누기', type: 'C' },
+      { text: '감독·배우 정보 찾아보며 분석하기', type: 'P' },
     ],
   },
   {
     id: 4,
-    title: '예산보다 지출이 조금 초과됐다면?',
+    title: '영화제 굿즈숍 앞에 섰을 때 나는?',
     answers: [
-      { text: '영화제 기간만큼은 경험이 우선이라고 생각한다', type: 'C' },
-      { text: '남은 일정은 즉시 조정해 총액을 맞춘다', type: 'P' },
+      { text: '마음에 드는 거 다 담기! 나중에 후회하면 아쉽잖아', type: 'C' },
+      { text: '실용적인 것 위주로 딱 필요한 것만', type: 'P' },
+      { text: '예쁜 거 하나 골라 기념으로', type: 'C' },
+      { text: '구경만 하고 그냥 나옴', type: 'P' },
     ],
   },
   {
     id: 5,
-    title: '숙소를 고를 때 더 중요한 기준은?',
+    title: '영화제 식사 계획은?',
     answers: [
-      { text: '분위기 좋은 감성 숙소와 편안함', type: 'C' },
-      { text: '상영관 접근성과 실속 있는 가격', type: 'P' },
+      { text: '맛집 리스트 미리 뽑아두고 정해진 곳만', type: 'P' },
+      { text: '걷다가 땡기면 아무데나', type: 'C' },
+      { text: '함께 온 사람들이 먹고 싶은 곳으로', type: 'C' },
+      { text: '편의점 or 간단히 해결, 영화가 우선!', type: 'P' },
     ],
   },
   {
     id: 6,
-    title: '보고 싶은 작품이 매진이라면?',
+    title: '영화제에서 가장 중요한 것은?',
     answers: [
-      { text: '현장 취소표/추가 상영을 끝까지 노려본다', type: 'C' },
-      { text: '바로 플랜 B 작품으로 스케줄을 재정비한다', type: 'P' },
+      { text: '희귀한 작품, 특별 상영작을 보는 것', type: 'P' },
+      { text: '좋은 사람들과 함께하는 시간', type: 'C' },
+      { text: '나만의 특별한 추억과 감동', type: 'C' },
+      { text: '영화감독/배우 GV 참여 등 특별 이벤트', type: 'P' },
     ],
   },
   {
     id: 7,
-    title: '영화제 음식 소비 스타일은?',
+    title: '영화제 예산을 짤 때 나는?',
     answers: [
-      { text: '지역 맛집 탐방도 영화제의 중요한 즐거움이다', type: 'C' },
-      { text: '간단히 해결하고 티켓/이동 비용에 더 투자한다', type: 'P' },
+      { text: '티켓·굿즈·식비 항목별로 예산 설정', type: 'P' },
+      { text: '대략 이 정도 쓰면 되겠지~ 하고 감으로', type: 'C' },
+      { text: '특별한 경험에는 아끼지 않는 편', type: 'C' },
+      { text: '가능하면 최대한 아끼는 편', type: 'P' },
     ],
   },
   {
     id: 8,
-    title: '행사 마지막 날, 남은 예산이 있다면?',
+    title: '영화제 동행은 어떻게 하나요?',
     answers: [
-      { text: '기념 굿즈나 추가 관람에 시원하게 쓴다', type: 'C' },
-      { text: '남은 금액은 다음 영화제 준비 자금으로 남긴다', type: 'P' },
+      { text: '혼자가 편해! 내 페이스대로', type: 'P' },
+      { text: '친한 친구 1~2명과 함께', type: 'C' },
+      { text: '영화 좋아하는 사람들 많이 모아서 단체로', type: 'C' },
+      { text: '그때그때 달라요, 혼자도 단체도 다 OK', type: 'P' },
     ],
   },
   {
     id: 9,
-    title: '현장 이벤트 부스에서 한정 혜택을 봤을 때 나는?',
+    title: '영화제 기간 숙소/이동 계획은?',
     answers: [
-      { text: '지금 아니면 못 받으니 바로 참여한다', type: 'C' },
-      { text: '조건과 실제 혜택을 먼저 확인하고 결정한다', type: 'P' },
+      { text: '미리 숙소 예약하고 교통 루트도 다 짜둠', type: 'P' },
+      { text: '당일치기! 교통편만 체크', type: 'C' },
+      { text: '즉흥적으로! 되면 되는 거지', type: 'C' },
+      { text: '같이 가는 친구한테 다 맡김', type: 'P' },
     ],
   },
   {
     id: 10,
-    title: '영화제 마지막 저녁, 추가로 한 편 더 볼 기회가 생겼다.',
+    title: '영화제가 끝난 뒤 나는?',
     answers: [
-      { text: '체력보다 아쉬움이 크다. 한 편 더 본다', type: 'C' },
-      { text: '내일 일정을 위해 여기서 마무리하고 귀가한다', type: 'P' },
+      { text: '관람 기록 정리하고 포스터·티켓 보관', type: 'P' },
+      { text: '이미 다음 영화제 기대 중', type: 'C' },
+      { text: '여운이 길게 남아서 한동안 그 생각만', type: 'P' },
+      { text: 'SNS에 후기 올리고 친구들에게 추천', type: 'C' },
     ],
   },
 ];
@@ -121,6 +141,7 @@ const ui = {
   backBtn: document.getElementById('back-btn'),
   progressText: document.getElementById('progress-text'),
   progressBar: document.getElementById('progress-bar'),
+  questionLabel: document.getElementById('question-label'),
   questionTitle: document.getElementById('question-title'),
   answers: document.getElementById('answers'),
   resultVisual: document.getElementById('result-visual'),
@@ -150,6 +171,7 @@ function renderQuestion() {
   const q = questions[state.step];
   ui.progressText.textContent = `${state.step + 1} / ${questions.length}`;
   ui.progressBar.style.width = `${((state.step + 1) / questions.length) * 100}%`;
+  ui.questionLabel.textContent = `Q${state.step + 1}`;
   ui.questionTitle.textContent = q.title;
   ui.answers.innerHTML = '';
 
@@ -201,14 +223,15 @@ function renderResult() {
   ui.resultVisual.alt = data.imageAlt;
   ui.resultTitle.textContent = data.title;
   ui.resultDesc.textContent = data.description;
+  const tipIcons = ['▹', '♡', '▣'];
   ui.resultTips.innerHTML = `
     <h3>${data.tipsTitle || '나에게 맞는 영화제 꿀팁'}</h3>
     <ul>
       ${data.tips
         .map(
-          (tip) => `
+          (tip, index) => `
             <li>
-              <span class="tip-icon">▹</span>
+              <span class="tip-icon">${tipIcons[index] || '•'}</span>
               <span class="tip-text">${tip}</span>
             </li>
           `

@@ -107,7 +107,7 @@ const TEAM_INSTAGRAM_URL = 'https://www.instagram.com/jbs_jeonjin.zip/';
 const resultMap = {
   EJ: {
     title: '🎉 EJ형: 에너지 드라이버',
-    image: './assets/result-ej.svg',
+    image: './assets/result-ej.png',
     imageAlt: 'EJ 유형 결과 대표 이미지',
     mbtiTag: 'EJ',
     mbtiDesc: '외향(E) + 계획(J)',
@@ -122,7 +122,7 @@ const resultMap = {
   },
   EP: {
     title: '🤝 EP형: 소셜 무버',
-    image: './assets/result-ep.svg',
+    image: './assets/result-ep.png',
     imageAlt: 'EP 유형 결과 대표 이미지',
     mbtiTag: 'EP',
     mbtiDesc: '외향(E) + 유연(P)',
@@ -137,7 +137,7 @@ const resultMap = {
   },
   IJ: {
     title: '🧭 IJ형: 전략 큐레이터',
-    image: './assets/result-ij.svg',
+    image: './assets/result-ij.png',
     imageAlt: 'IJ 유형 결과 대표 이미지',
     mbtiTag: 'IJ',
     mbtiDesc: '내향(I) + 계획(J)',
@@ -152,7 +152,7 @@ const resultMap = {
   },
   IP: {
     title: '🌙 IP형: 감성 아카이버',
-    image: './assets/result-ip.svg',
+    image: './assets/result-ip.png',
     imageAlt: 'IP 유형 결과 대표 이미지',
     mbtiTag: 'IP',
     mbtiDesc: '내향(I) + 유연(P)',
@@ -429,6 +429,24 @@ function drawCenteredFittedText(ctx, text, y, maxWidth, weight, startSize, minSi
   ctx.fillText(text, x, y);
 }
 
+function loadImage(src) {
+  return new Promise((resolve, reject) => {
+    const image = new Image();
+    image.onload = () => resolve(image);
+    image.onerror = () => reject(new Error(`이미지 로드 실패: ${src}`));
+    image.src = src;
+  });
+}
+
+function drawImageContain(ctx, image, x, y, width, height) {
+  const scale = Math.min(width / image.width, height / image.height);
+  const drawWidth = image.width * scale;
+  const drawHeight = image.height * scale;
+  const drawX = x + (width - drawWidth) / 2;
+  const drawY = y + (height - drawHeight) / 2;
+  ctx.drawImage(image, drawX, drawY, drawWidth, drawHeight);
+}
+
 async function createResultCardBlob() {
   const resultType = state.resultType || getTopResultType(state.score);
   const data = resultMap[resultType];
@@ -441,25 +459,35 @@ async function createResultCardBlob() {
     throw new Error('Canvas context를 생성할 수 없습니다.');
   }
 
-  // Minimal share card style: centered text + character/visual
-  ctx.fillStyle = '#F7F8FA';
+  ctx.fillStyle = '#1F64EA';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.globalAlpha = 0.2;
+  drawRoundedRect(ctx, -120, -80, 520, 520, 260, '#6FA9FF');
+  drawRoundedRect(ctx, 770, 1220, 450, 450, 225, '#6FA9FF');
+  ctx.globalAlpha = 1;
 
-  drawCenteredFittedText(ctx, '당신의 영화제 유형은', 170, 920, '600', 66, 46, '#5A6172');
-  drawCenteredFittedText(ctx, data.mbtiTag, 350, 920, '800', 136, 98, '#3E4A66');
+  drawCenteredFittedText(ctx, '전주국제영화제 X 전북은행 대학생 서포터즈', 120, 980, '700', 56, 36, '#FFFFFF');
+  drawCenteredFittedText(ctx, 'MoneyBTI 결과', 230, 980, '800', 96, 70, '#FFFFFF');
 
-  const resultName = data.title.replace(/^[^\p{Letter}\p{Number}가-힣]+/u, '');
-  drawCenteredFittedText(ctx, resultName, 520, 920, '700', 94, 54, '#3459D6');
-  drawCenteredFittedText(ctx, data.mbtiDesc, 670, 920, '600', 86, 50, '#B88B15');
+  const panelX = 60;
+  const panelY = 300;
+  const panelWidth = 960;
+  const panelHeight = 1380;
+  drawRoundedRect(ctx, panelX, panelY, panelWidth, panelHeight, 36, '#EEF1F7');
 
-  // Draw a robust center panel (no external image dependency)
-  drawRoundedRect(ctx, 190, 760, 700, 700, 40, '#ECEFF4');
-  drawCenteredFittedText(ctx, data.mbtiTag, 1060, 620, '800', 220, 170, '#3459D6');
-  drawCenteredFittedText(ctx, data.mbtiDesc, 1160, 620, '600', 68, 48, '#5A6172');
-  drawCenteredFittedText(ctx, 'JIFF MoneyBTI', 1260, 620, '600', 52, 38, '#8D95A7');
+  try {
+    const typeImage = await loadImage(data.image);
+    drawImageContain(ctx, typeImage, panelX + 40, panelY + 40, panelWidth - 80, 1040);
+  } catch (_error) {
+    drawRoundedRect(ctx, panelX + 40, panelY + 40, panelWidth - 80, 1040, 24, '#E0E5EF');
+    drawCenteredFittedText(ctx, data.mbtiTag, 900, 760, '800', 260, 180, '#3459D6');
+  }
 
-  drawCenteredFittedText(ctx, '@jbsupporters_official  @jbs_jeonjin.zip', 1760, 980, '600', 52, 40, '#5A6172');
-  drawCenteredFittedText(ctx, '전주국제영화제 MoneyBTI 결과 공유', 1830, 980, '500', 46, 34, '#5A6172');
+  drawCenteredFittedText(ctx, data.title, 1430, 900, '800', 78, 52, '#3459D6');
+  drawCenteredFittedText(ctx, data.mbtiDesc, 1510, 900, '700', 62, 44, '#5A6172');
+
+  drawCenteredFittedText(ctx, '@jbsupporters_official  @jbs_jeonjin.zip', 1805, 980, '700', 56, 38, '#FFFFFF');
+  drawCenteredFittedText(ctx, '인스타그램에서 더 많은 현장 소식을 확인하세요', 1870, 980, '500', 46, 30, '#FFFFFF');
 
   return new Promise((resolve, reject) => {
     canvas.toBlob((blob) => {

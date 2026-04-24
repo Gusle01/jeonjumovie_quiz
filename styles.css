@@ -682,27 +682,39 @@ h1 {
 .benefit-guide-card h3 {
   margin: 0;
   padding: 16px 18px 12px;
-  color: #3d5fdc;
+  color: #161b28;
   font-size: clamp(21px, 3.3vw, 27px);
 }
 
-.benefit-guide-visual {
-  margin: 0 2px;
+.benefit-guide-accent {
+  color: #3d5fdc;
+}
+
+.benefit-guide-content {
+  display: grid;
+  grid-template-columns: minmax(180px, 44%) 1fr;
+  align-items: stretch;
+  gap: 0;
   border-top: 1px solid #eff2fa;
-  border-bottom: 1px solid #eff2fa;
-  height: clamp(160px, 24vh, 260px);
+}
+
+.benefit-guide-visual {
+  min-height: 180px;
   background: linear-gradient(140deg, #ff6b00 0%, #ff4f08 40%, #ffad35 100%);
   color: #fff4da;
-  font-size: clamp(42px, 7vw, 72px);
+  font-size: clamp(26px, 4.5vw, 48px);
   font-weight: 800;
-  letter-spacing: -0.6px;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
+  padding: 18px;
 }
 
 .benefit-guide-card p {
-  padding: 14px 18px 16px;
+  padding: 18px;
+  display: flex;
+  align-items: center;
 }
 
 .benefit-tip-card p {
@@ -906,8 +918,16 @@ h1 {
   }
 
   .benefit-guide-visual {
-    height: 150px;
-    font-size: 38px;
+    min-height: 120px;
+    font-size: 28px;
+  }
+
+  .benefit-guide-content {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-guide-card p {
+    padding: 14px;
   }
 
   .benefit-cta-card h3 {

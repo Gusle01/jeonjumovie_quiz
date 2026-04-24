@@ -557,10 +557,14 @@ h1 {
 
 .benefit-hero-caption {
   margin-top: 10px;
-  color: #355fdb;
+  color: #161b28;
   font-size: clamp(16px, 2.4vw, 22px);
   font-weight: 700;
   letter-spacing: -0.2px;
+}
+
+.benefit-caption-accent {
+  color: #355fdb;
 }
 
 .benefit-logo-wrap {

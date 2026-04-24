@@ -176,50 +176,50 @@ const sokBankBenefitMap = {
     typeLabel: 'EJ 유형',
     typeName: '⚡ 에너지 드라이버',
     reason:
-      '빠르게 참여하고 즉시 보상받는 구조를 선호해서, 지금 바로 체감 가능한 참여형 혜택이 특히 잘 맞아요.',
+      '빠르게 참여하고 즉시 보상받는 구조를 선호해서, “지금 바로 참여”형 혜택이 잘 맞아요.',
     feature: {
-      title: 'JB앱테크',
-      badge: '즉시 적립',
-      desc: '앱에서 간단한 미션만 수행해도 포인트 적립이 가능해요. 빠르게 참여하고 바로 보상받는 구조에 딱 맞습니다.',
+      benefits: ['JB앱테크', '출석하고 현금받기'],
+      badge: '실행형 추천',
+      desc: '간단한 미션과 출석 루틴으로 바로 참여하고 보상을 확인할 수 있어요.',
     },
-    guideDesc: '전북은행 앱 혜택 메뉴에서 오늘 진행 중인 적립형 이벤트와 참여 미션을 바로 확인할 수 있어요.',
+    guideDesc: '쏙뱅크 혜택 메뉴에서 JB앱테크와 출석 리워드를 확인하고, 바로 참여할 수 있어요.',
     tip: 'Tip: 앱 알림을 켜두면 이벤트 시작 소식을 빠르게 받아 선착순 혜택을 놓치지 않아요.',
   },
   EP: {
     typeLabel: 'EP 유형',
     typeName: '🤝 소셜 무버',
-    reason: '사람들과 함께 움직일 때 만족도가 높아서, 생활/모임 중심의 공유형 혜택이 가장 효율적이에요.',
+    reason: '재미 요소와 공유/대화 소재가 되는 혜택에 반응이 좋고, 참여 경험 자체를 즐기는 타입이에요.',
     feature: {
-      title: '생활 제휴 혜택',
-      badge: '모임 활용',
-      desc: '카페, 외식, 교통 등 일상 소비 영역 혜택을 모임 일정과 함께 쓰면 체감이 커요.',
+      benefits: ['행운의 룰렛과 사다리타기', 'AI 간편투자'],
+      badge: '트렌드형 추천',
+      desc: '룰렛·사다리처럼 재미있는 참여형 혜택과 새로운 금융 경험을 함께 즐길 수 있어요.',
     },
-    guideDesc: '혜택 메뉴에서 카테고리별 이벤트를 확인하고, 영화제 동선에 맞는 제휴 혜택을 먼저 저장해두세요.',
-    tip: 'Tip: 동행 인원과 지출 카테고리를 먼저 정하면 혜택 적용 가능한 결제 수단을 고르기 쉬워요.',
+    guideDesc: '쏙뱅크에서 룰렛·사다리 이벤트를 확인하고, AI 간편투자로 가볍게 투자 경험도 시작해보세요.',
+    tip: 'Tip: 친구와 함께 오늘의 룰렛 결과를 공유하면 참여 경험 자체가 더 재미있는 대화 소재가 돼요.',
   },
   IJ: {
     typeLabel: 'IJ 유형',
     typeName: '🧭 전략 큐레이터',
-    reason: '조건·실적·예산을 미리 설계하는 성향이라, 구조적으로 관리 가능한 계획형 혜택과 궁합이 좋아요.',
+    reason: '루틴 관리, 정보 기반 선택, 누적형 리워드 최적화에 강해서 “꾸준히 쌓이는 혜택”이 적합해요.',
     feature: {
-      title: '소비 리포트 + 목표관리',
-      badge: '계획 최적화',
-      desc: '카테고리별 소비 흐름을 확인하고 목표 예산을 세우면 혜택 활용 효율을 안정적으로 높일 수 있어요.',
+      benefits: ['날씨', '건강걸음'],
+      badge: '루틴형 추천',
+      desc: '매일 확인하는 정보와 걸음 루틴을 혜택으로 연결해 꾸준히 쌓는 방식이 잘 맞아요.',
     },
-    guideDesc: '앱의 소비 분석 화면에서 항목별 지출을 점검하고, 혜택 조건 달성률을 함께 관리해보세요.',
-    tip: 'Tip: 영화제 기간 전용 예산을 따로 설정하면 티켓/식비/굿즈 지출을 균형 있게 유지할 수 있어요.',
+    guideDesc: '쏙뱅크에서 날씨와 건강걸음 혜택을 확인하고, 매일 반복 가능한 리워드 루틴을 만들어보세요.',
+    tip: 'Tip: 하루 시작 전에 날씨를 확인하고 이동량을 체크하면 혜택 참여 루틴을 놓치지 않아요.',
   },
   IP: {
     typeLabel: 'IP 유형',
     typeName: '🌿 감성 아카이버',
-    reason: '내 페이스를 지키며 깊게 경험하는 타입이라, 필요할 때 가볍게 활용하는 유연한 혜택이 잘 맞아요.',
+    reason: '일상 컨디션과 기분에 연결되는 혜택, 부담 없이 즐길 수 있는 감성형 경험이 잘 맞아요.',
     feature: {
-      title: '소액 생활 혜택',
-      badge: '부담 없이',
-      desc: '작은 소비에도 적용되는 생활 혜택 중심으로 사용하면, 흐름을 깨지 않고 꾸준히 체감할 수 있어요.',
+      benefits: ['날씨', '행운의 룰렛'],
+      badge: '감성형 추천',
+      desc: '오늘의 기분과 컨디션을 확인하고, 가볍게 룰렛을 돌리며 부담 없이 혜택을 즐길 수 있어요.',
     },
-    guideDesc: '앱 혜택 탭에서 자주 쓰는 생활 카테고리를 즐겨찾기해두면 필요한 순간 빠르게 확인할 수 있어요.',
-    tip: 'Tip: 알림은 최소한으로 설정하고, 하루 한 번만 혜택 탭을 확인하는 루틴으로 부담 없이 관리해보세요.',
+    guideDesc: '쏙뱅크에서 오늘의 날씨를 확인하고, 행운의 룰렛으로 가볍게 캐시 혜택에 참여해보세요.',
+    tip: 'Tip: 영화제 일정 전후로 날씨를 확인하고 룰렛을 돌리면 작은 혜택도 즐거운 루틴이 돼요.',
   },
 };
 
@@ -245,7 +245,7 @@ const ui = {
   benefitTypeLabel: document.getElementById('benefit-type-label'),
   benefitTypeName: document.getElementById('benefit-type-name'),
   benefitReasonText: document.getElementById('benefit-reason-text'),
-  benefitFeatureTitle: document.getElementById('benefit-feature-title'),
+  benefitFeatureList: document.getElementById('benefit-feature-list'),
   benefitFeatureBadge: document.getElementById('benefit-feature-badge'),
   benefitFeatureDesc: document.getElementById('benefit-feature-desc'),
   benefitGuideDesc: document.getElementById('benefit-guide-desc'),
@@ -372,7 +372,9 @@ function renderBenefit(type) {
   ui.benefitTypeLabel.textContent = data.typeLabel;
   ui.benefitTypeName.textContent = data.typeName;
   ui.benefitReasonText.textContent = data.reason;
-  ui.benefitFeatureTitle.textContent = data.feature.title;
+  ui.benefitFeatureList.innerHTML = data.feature.benefits
+    .map((benefit) => `<span class="benefit-chip">${benefit}</span>`)
+    .join('');
   ui.benefitFeatureBadge.textContent = data.feature.badge;
   ui.benefitFeatureDesc.textContent = data.feature.desc;
   ui.benefitGuideDesc.textContent = data.guideDesc;

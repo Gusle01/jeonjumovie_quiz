@@ -748,12 +748,22 @@ h1 {
   gap: 10px;
   text-decoration: none;
   font-weight: 700;
+  min-height: 74px;
+  border-radius: 18px;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  text-align: center;
 }
 
 .benefit-store-btn img {
   width: 34px;
   height: 34px;
   flex: 0 0 auto;
+}
+
+.benefit-store-btn span {
+  display: inline-block;
 }
 
 #benefit-screen[data-type='EJ'] .benefit-type-name {
@@ -937,6 +947,12 @@ h1 {
   .benefit-cta-actions {
     grid-template-columns: 1fr;
     gap: 8px;
+  }
+
+  .benefit-store-btn {
+    min-height: 56px;
+    border-radius: 14px;
+    font-size: 15px;
   }
 
   .benefit-store-btn img {

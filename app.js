@@ -180,7 +180,7 @@ const sokBankBenefitMap = {
     feature: {
       benefits: ['JB앱테크', '출석하고 현금받기'],
       badge: '실행형 추천',
-      desc: '간단한 미션과 출석 루틴으로 바로 참여하고 보상을 확인할 수 있어요.',
+      desc: 'EJ에게 추천하는 혜택은 JB앱테크와 출석하고 현금받기예요. 짧은 미션과 출석 루틴으로 빠르게 참여하고 바로 보상을 확인할 수 있어요.',
     },
     guideDesc: '쏙뱅크 혜택 메뉴에서 JB앱테크와 출석 리워드를 확인하고, 바로 참여할 수 있어요.',
     tip: 'Tip: 앱 알림을 켜두면 이벤트 시작 소식을 빠르게 받아 선착순 혜택을 놓치지 않아요.',
@@ -192,7 +192,7 @@ const sokBankBenefitMap = {
     feature: {
       benefits: ['행운의 룰렛과 사다리타기', 'AI 간편투자'],
       badge: '트렌드형 추천',
-      desc: '룰렛·사다리처럼 재미있는 참여형 혜택과 새로운 금융 경험을 함께 즐길 수 있어요.',
+      desc: 'EP에게 추천하는 혜택은 행운의 룰렛·사다리타기와 AI 간편투자예요. 재미있는 참여형 이벤트와 새로운 금융 경험을 함께 즐길 수 있어요.',
     },
     guideDesc: '쏙뱅크에서 룰렛·사다리 이벤트를 확인하고, AI 간편투자로 가볍게 투자 경험도 시작해보세요.',
     tip: 'Tip: 친구와 함께 오늘의 룰렛 결과를 공유하면 참여 경험 자체가 더 재미있는 대화 소재가 돼요.',
@@ -204,7 +204,7 @@ const sokBankBenefitMap = {
     feature: {
       benefits: ['날씨', '건강걸음'],
       badge: '루틴형 추천',
-      desc: '매일 확인하는 정보와 걸음 루틴을 혜택으로 연결해 꾸준히 쌓는 방식이 잘 맞아요.',
+      desc: 'IJ에게 추천하는 혜택은 날씨와 건강걸음이에요. 매일 확인하는 정보와 걸음 루틴을 혜택으로 연결해 꾸준히 쌓을 수 있어요.',
     },
     guideDesc: '쏙뱅크에서 날씨와 건강걸음 혜택을 확인하고, 매일 반복 가능한 리워드 루틴을 만들어보세요.',
     tip: 'Tip: 하루 시작 전에 날씨를 확인하고 이동량을 체크하면 혜택 참여 루틴을 놓치지 않아요.',
@@ -216,7 +216,7 @@ const sokBankBenefitMap = {
     feature: {
       benefits: ['날씨', '행운의 룰렛'],
       badge: '감성형 추천',
-      desc: '오늘의 기분과 컨디션을 확인하고, 가볍게 룰렛을 돌리며 부담 없이 혜택을 즐길 수 있어요.',
+      desc: 'IP에게 추천하는 혜택은 날씨와 행운의 룰렛이에요. 오늘의 기분과 컨디션을 확인하고 부담 없이 가볍게 혜택을 즐길 수 있어요.',
     },
     guideDesc: '쏙뱅크에서 오늘의 날씨를 확인하고, 행운의 룰렛으로 가볍게 캐시 혜택에 참여해보세요.',
     tip: 'Tip: 영화제 일정 전후로 날씨를 확인하고 룰렛을 돌리면 작은 혜택도 즐거운 루틴이 돼요.',
@@ -399,7 +399,9 @@ function renderBenefit(type) {
     .join('');
   ui.benefitFeatureBadge.textContent = data.feature.badge;
   ui.benefitFeatureDesc.textContent = data.feature.desc;
-  ui.benefitGuideDesc.textContent = data.guideDesc;
+  if (ui.benefitGuideDesc) {
+    ui.benefitGuideDesc.textContent = data.guideDesc;
+  }
   ui.benefitTipText.textContent = data.tip;
 }
 

@@ -223,6 +223,20 @@ const sokBankBenefitMap = {
   },
 };
 
+const benefitImageMap = {
+  날씨: './assets/benefit-weather.jpeg',
+  건강걸음: './assets/benefit-health-walk.jpeg',
+  JB앱테크: './assets/benefit-jb-apptech.jpeg',
+  운세: './assets/benefit-fortune.jpeg',
+  'AI 간편투자': './assets/benefit-ai-invest.png',
+  '출석하고 현금받기': './assets/benefit-attendance.jpeg',
+  사다리타기: './assets/benefit-ladder.jpeg',
+  '행운의 룰렛': './assets/lucky-roulette-card.jpeg',
+  '행운의 룰렛과 사다리타기': './assets/benefit-ladder.jpeg',
+  머니캡슐: './assets/benefit-money-capsule.jpeg',
+  둥근해잡기: './assets/benefit-round-sun.jpeg',
+};
+
 const ui = {
   start: document.getElementById('start-screen'),
   question: document.getElementById('question-screen'),
@@ -373,7 +387,15 @@ function renderBenefit(type) {
   ui.benefitTypeName.textContent = data.typeName;
   ui.benefitReasonText.textContent = data.reason;
   ui.benefitFeatureList.innerHTML = data.feature.benefits
-    .map((benefit) => `<span class="benefit-chip">${benefit}</span>`)
+    .map((benefit) => {
+      const image = benefitImageMap[benefit];
+      return `
+        <article class="benefit-chip">
+          ${image ? `<img src="${image}" alt="${benefit} 혜택 이미지" />` : ''}
+          <span>${benefit}</span>
+        </article>
+      `;
+    })
     .join('');
   ui.benefitFeatureBadge.textContent = data.feature.badge;
   ui.benefitFeatureDesc.textContent = data.feature.desc;

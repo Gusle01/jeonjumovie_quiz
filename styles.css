@@ -802,7 +802,15 @@ h1 {
   color: #2f75dd;
 }
 
+#benefit-screen[data-type='EJ'] .benefit-type-label {
+  color: #2f75dd;
+}
+
 #benefit-screen[data-type='EP'] .benefit-type-name {
+  color: #e45f95;
+}
+
+#benefit-screen[data-type='EP'] .benefit-type-label {
   color: #e45f95;
 }
 
@@ -810,7 +818,15 @@ h1 {
   color: #6a50c9;
 }
 
+#benefit-screen[data-type='IJ'] .benefit-type-label {
+  color: #6a50c9;
+}
+
 #benefit-screen[data-type='IP'] .benefit-type-name {
+  color: #3b8d56;
+}
+
+#benefit-screen[data-type='IP'] .benefit-type-label {
   color: #3b8d56;
 }
 

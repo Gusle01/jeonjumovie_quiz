@@ -680,7 +680,7 @@ h1 {
 
 .benefit-chip {
   display: grid;
-  grid-template-rows: 126px auto;
+  grid-template-rows: 160px auto;
   min-height: 0;
   overflow: hidden;
   border: 1px solid #dbe4f8;
@@ -961,7 +961,7 @@ h1 {
   }
 
   .benefit-chip {
-    grid-template-rows: 122px auto;
+    grid-template-rows: 150px auto;
     border-radius: 12px;
     font-size: 14px;
   }
